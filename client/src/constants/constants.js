@@ -67,3 +67,21 @@ export const sideBarNav = [
         icon : settings
     }
 ]
+
+export const Admin_Dashboard_Stats = [
+    {
+        id : 1,
+        icon : PiStudent,
+        role : 'students',
+    },
+    {
+        id : 2,
+        icon :  PiChalkboardTeacher,
+        role : 'mentors',
+    },
+    {
+        id : 3,
+        icon : GoBook,
+        role : 'subjects',
+    }
+]

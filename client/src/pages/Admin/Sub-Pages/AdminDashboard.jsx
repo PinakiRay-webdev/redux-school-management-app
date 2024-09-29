@@ -1,73 +1,71 @@
-import React , {useState} from "react";
-import { GoBook } from "react-icons/go";
-import { useSelector } from "react-redux";
-import { PiChalkboardTeacher, PiStudent } from "react-icons/pi";
-import { HiMiniUserPlus } from "react-icons/hi2";import AddUsers from "../AddUsers";
+import React, { useEffect , useState} from "react";
+import {PiUserPlus } from "react-icons/pi";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers } from "../../../Redux/slice/userSlice";
+import { Admin_Dashboard_Stats } from "../../../constants/constants";
+import AddUsers from '../AddUsers'
+
 
 const AdminDashboard = () => {
 
   const [isFormOpen, setIsFormOpen] = useState("scale-0")
 
   const handleForm = () =>{
-    setIsFormOpen("scale-100")
+      setIsFormOpen("scale-100")
+  }
+  const userData = useSelector((state) => state.user.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  const students = userData.filter((role) => role.Role === "student");
+  const mentors = userData.filter((role) => role.Role === "mentor");
+
+  const handleNumberOfRole = (role) =>{
+    if(role === 'students') {
+      return students.length;
+    } else if (role === 'mentors') {
+      return mentors.length;
+    } else {
+      return "0"
+    }
   }
 
-  const userInfo = useSelector((state) => state.user.users);
-
-  const students = userInfo.filter(role => role.Role === 'student');
-  const mentor = userInfo.filter(role => role.Role === 'mentor');
-
   return (
-    <div className="pl-32 w-full h-fit">
-      <div className="px-3 py-4">
+    <div className="w-full h-fit pl-32">
+      <div className="px-3 py-5">
         {/* stats section  */}
-        <div className="grid grid-cols-4 gap-10">
+        <div className="grid grid-cols-4 gap-3">
+          {Admin_Dashboard_Stats.map((Element, id) => (
+            <div
+              key={id}
+              className="bg-[#9ef01a] flex items-start gap-3 rounded-lg"
+            >
+              <p className="text-8xl text-[#007200]">
+                {<Element.icon/>}
+              </p>
 
-          {/* total students  */}
-          <div className="flex items-start gap-4 bg-[#6b9080] py-4 px-2 rounded-xl">
-            <p className="text-7xl text-[#2f3e46]">
-              <PiStudent />
-            </p>
-            <div>
-            <p className="font-semibold text-[#cad2c5] ">Total Students</p>
-            <p className="text-4xl text-[#cce3de]" >{students.length}</p>
+              <div>
+                <p className="text-xl text-[#007200] font-semibold capitalize">
+                  {"Total "+Element.role}
+                </p>
+                <p className="text-5xl font-black text-[#004b23]">
+                  {handleNumberOfRole(Element.role)}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
 
-          {/* total teachers  */}
-          <div className="flex items-start gap-4 bg-[#6b9080] py-4 px-2 rounded-xl">
-            <p className="text-7xl text-[#2f3e46]">
-              <PiChalkboardTeacher />
-            </p>
-            <div>
-            <p className="font-semibold text-[#cad2c5] ">Total Teachers</p>
-            <p className="text-4xl text-[#cce3de]" >{mentor.length}</p>
-            </div>
-          </div>
-
-          {/* total subjects  */}
-          <div className="flex items-start gap-4 bg-[#6b9080] py-4 px-2 rounded-xl">
-            <p className="text-7xl text-[#2f3e46]">
-              <GoBook />
-            </p>
-            <div>
-            <p className="font-semibold text-[#cad2c5] ">Total Subjects</p>
-            <p className="text-4xl text-[#cce3de]" >0</p>
-            </div>
-          </div>
-
-          <div onClick={handleForm} className="cursor-pointer flex items-start gap-4 bg-[#6b9080] py-4 px-2 rounded-xl" >
-          <p className="text-7xl text-[#2f3e46]">
-              <HiMiniUserPlus />
-            </p>
-            <div>
-            <p className="font-semibold text-[#cad2c5] ">Add user</p>
-            </div>
+          {/* adding of a new user section  */}
+          <div onClick={handleForm} className="bg-[#ffea00] flex flex-col items-center justify-center rounded-lg cursor-pointer" >
+            <p className="text-7xl text-[#ff5400]" ><PiUserPlus/></p>
           </div>
         </div>
+      </div>
         
         <AddUsers isFormOpen={isFormOpen} setIsFormOpen={setIsFormOpen} />
-      </div>
     </div>
   );
 };

@@ -23,14 +23,6 @@
       "Email": "ajay@student.com",
       "Role": "student",
       "Password": "124"
-    },
-    {
-      "id": "1ad8",
-      "FirstName": "ravi",
-      "LastName": "kumar",
-      "Email": "ravi@student.com",
-      "Role": "student",
-      "Password": "123"
     }
   ]
 }

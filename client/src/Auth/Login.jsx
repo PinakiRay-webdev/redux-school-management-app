@@ -1,17 +1,25 @@
-import React from "react";
+import React , {useEffect} from "react";
 import { useForm } from "react-hook-form";
+import {useSelector , useDispatch} from 'react-redux'
 import { loginImg, google, facebook, github } from "../constants/constants";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getUsers } from "../Redux/slice/userSlice";
 const Login = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.user)
+
+  useEffect(()=>{
+    dispatch(getUsers());
+  },[dispatch])
+
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors , isSubmitting },
   } = useForm()
@@ -29,7 +37,8 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     await delay(2)
-    
+
+    const validUser = userData.users.find(user => user.Email === data.userEmail && user.Password === data.userPassword)
     //admin login 
     if(data.userEmail.trim() === import.meta.env.VITE_ADMINEMAIL.trim() && data.userPassword.trim() === import.meta.env.VITE_ADMINPASSWORD.trim()){
       toast.success("Logged in successfully" , {theme: "dark"})
@@ -39,7 +48,25 @@ const Login = () => {
       localStorage.setItem('adminCredentials' , JSON.stringify({
         admin_mail : data.userEmail
       }))
-    } else {
+
+      // other users login 
+    } else if(validUser) {
+      const role = validUser.Role
+        if(role === 'mentor'){
+          toast.success('Mentor logged in successfully' , {theme: "dark"})
+          setTimeout(() => {
+            navigate('/mentorDashboard/dashboard');
+          }, 2000);
+          localStorage.setItem('mentorCredentials' , JSON.stringify({
+            mentor_mail : data.userEmail,
+            role : role
+          }))
+        } else {
+          setTimeout(() => {
+            navigate('/studentDashboard/dashboard');
+          }, 2000);
+        }
+    }  else {
       toast.error("Invalid credentials" , {theme: "dark"})
     }
     reset();

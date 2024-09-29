@@ -11,6 +11,8 @@ import AdminSubjects from "./pages/Admin/Sub-Pages/AdminSubjects";
 import AdminEarnings from "./pages/Admin/Sub-Pages/AdminEarnings";
 import Chat from "./pages/chat/Chat";
 import AdminSettings from "./pages/Admin/Sub-Pages/AdminSettings";
+import MentorHome from "./pages/Mentor/MentorHome";
+import StudentHome from "./pages/Student/StudentHome";
 const App = () => {
   const myRouter = createBrowserRouter([
     {
@@ -86,6 +88,24 @@ const App = () => {
         <Navbar/>
         <AdminSideBar/>
         <AdminSettings/>
+        </>
+      )
+    },
+    {
+      path: "/mentorDashboard/dashboard",
+      element:(
+        <>
+        <Navbar/>
+        <MentorHome/>
+        </>
+      )
+    },
+    {
+      path: "/studentDashboard/dashboard",
+      element:(
+        <>
+        <Navbar/>
+        <StudentHome/>
         </>
       )
     }

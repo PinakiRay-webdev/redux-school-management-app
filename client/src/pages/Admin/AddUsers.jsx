@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { createUsers } from "../../Redux/slice/userSlice";
+// import { createUsers } from "../../Redux/slice/userSlice";
 const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
   const {
     register,
@@ -13,10 +13,9 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
   } = useForm();
 
   const closeForm = () => {
-    setIsFormOpen("scale-0");
+    setIsFormOpen("scale-0")
   };
 
-  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
 
@@ -37,7 +36,7 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
         })
 
         const userData = response.json();
-        dispatch(createUsers(userData))
+        // dispatch(createUsers(userData))
 
     } catch (error) {
         console.log({error : error.message});
