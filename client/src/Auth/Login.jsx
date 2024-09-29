@@ -52,6 +52,9 @@ const Login = () => {
       // other users login 
     } else if(validUser) {
       const role = validUser.Role
+
+        // mentor login 
+
         if(role === 'mentor'){
           toast.success('Mentor logged in successfully' , {theme: "dark"})
           setTimeout(() => {
@@ -61,10 +64,19 @@ const Login = () => {
             mentor_mail : data.userEmail,
             role : role
           }))
-        } else {
+        }
+        
+        // student login 
+        else {
           setTimeout(() => {
             navigate('/studentDashboard/dashboard');
           }, 2000);
+
+          toast.success('Student logged in successfully' , {theme: 'dark'})
+          localStorage.setItem('studentCredentials' , JSON.stringify({
+            student_mail : data.userEmail,
+            role : role
+          }))
         }
     }  else {
       toast.error("Invalid credentials" , {theme: "dark"})

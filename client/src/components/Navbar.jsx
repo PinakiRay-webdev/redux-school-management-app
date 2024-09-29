@@ -20,7 +20,7 @@ const Navbar = () => {
 
     const mentor = JSON.parse(localStorage.getItem('mentorCredentials'));
     const admin = JSON.parse(localStorage.getItem('adminCredentials'));
-
+    const student = JSON.parse(localStorage.getItem('studentCredentials'));
 
     const loggedInUser = userData.users.find(u => u.Email === (admin ? admin.admin_mail : mentor.mentor_mail));
 
