@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "5907",
+      "FirstName": "Pinaki",
+      "LastName": "Ray",
+      "Email": "pinaki.bpd2001@gmail.com",
+      "Role": "mentor",
+      "Password": "123"
+    },
+    {
+      "id": "a49c",
+      "FirstName": "Pinaki",
+      "LastName": "Ray",
+      "Email": "pinaki@mentor.com",
+      "Role": "mentor",
+      "Password": "123"
+    },
+    {
+      "id": "5775",
+      "FirstName": "ajay",
+      "LastName": "meeru",
+      "Email": "ajay@student.com",
+      "Role": "student",
+      "Password": "124"
+    },
+    {
+      "id": "1ad8",
+      "FirstName": "ravi",
+      "LastName": "kumar",
+      "Email": "ravi@student.com",
+      "Role": "student",
+      "Password": "123"
+    }
+  ]
+}
