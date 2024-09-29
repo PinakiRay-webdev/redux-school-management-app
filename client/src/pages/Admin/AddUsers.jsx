@@ -1,55 +1,42 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { IoIosCloseCircle } from "react-icons/io";
 import { useDispatch } from "react-redux";
-// import { createUsers } from "../../Redux/slice/userSlice";
+import { IoIosCloseCircle } from "react-icons/io";
+import { createUser } from "../../Redux/slice/userSlice"; // Adjust the path
+
 const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm();
 
+  const dispatch = useDispatch(); // Hook to dispatch actions
+
   const closeForm = () => {
-    setIsFormOpen("scale-0")
+    setIsFormOpen("scale-0");
   };
 
-
   const onSubmit = async (data) => {
+    const newUser = {
+      FirstName: data.userFirstName,
+      LastName: data.userLastName,
+      Email: data.userEmail,
+      Role: data.userRole,
+      Password: data.userPassword,
+    };
 
-      const url = 'http://localhost:3000/users';
-    try {
-        const response = await fetch(url , {
-            method : 'POST',
-            headers:{
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({
-                FirstName : data.userFirstName,
-                LastName : data.userLastName,
-                Email : data.userEmail,
-                Role  : data.userRole,
-                Password : data.userPassword
-            })
-        })
+    // Dispatch the createUser action to add the user to JSON server via Redux
+    dispatch(createUser(newUser));
 
-        const userData = response.json();
-        // dispatch(createUsers(userData))
-
-    } catch (error) {
-        console.log({error : error.message});
-        
-    }
-
-    console.log(data);
+    console.log("Form Submitted: ", data);
     reset();
   };
 
   return (
     <div
-      className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-[#cae9ff] h-fit z-10 w-[30vw] rounded-xl transition-all duration-100 px-3 py-2 ${isFormOpen} `}
+      className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-[#cae9ff] h-fit z-10 w-[30vw] rounded-xl transition-all duration-100 px-3 py-2 ${isFormOpen}`}
     >
       <header className="flex justify-end">
         <p
@@ -70,7 +57,6 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
             <br />
             <input
               type="text"
-              placeholder=""
               className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
               {...register("userFirstName", {
                 required: {
@@ -94,7 +80,6 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
             <br />
             <input
               type="text"
-              placeholder=""
               className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
               {...register("userLastName", {
                 required: {
@@ -111,15 +96,12 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
           </div>
         </div>
 
-        {/* Email ID */}
+        {/* Email */}
         <div className="pb-3">
-          <label className="text-sm font-semibold text-zinc-600">
-            Email ID:
-          </label>
+          <label className="text-sm font-semibold text-zinc-600">Email ID:</label>
           <br />
           <input
             type="email"
-            placeholder=""
             className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
             {...register("userEmail", {
               required: {
@@ -137,15 +119,12 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
           )}
         </div>
 
-        {/* User Role */}
+        {/* Role */}
         <div className="pb-3">
-          <label className="text-sm font-semibold text-zinc-600">
-            User Role:
-          </label>
+          <label className="text-sm font-semibold text-zinc-600">User Role:</label>
           <br />
           <input
             type="text"
-            placeholder=""
             className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
             {...register("userRole", {
               required: {
@@ -159,15 +138,12 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
           )}
         </div>
 
-        {/* User Password */}
+        {/* Password */}
         <div className="pb-3">
-          <label className="text-sm font-semibold text-zinc-600">
-            User Password:
-          </label>
+          <label className="text-sm font-semibold text-zinc-600">Password:</label>
           <br />
           <input
             type="password"
-            placeholder=""
             className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
             {...register("userPassword", {
               required: {
@@ -177,9 +153,7 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
             })}
           />
           {errors.userPassword && (
-            <p className="text-xs text-red-600">
-              {errors.userPassword.message}
-            </p>
+            <p className="text-xs text-red-600">{errors.userPassword.message}</p>
           )}
         </div>
 
