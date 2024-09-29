@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "5907",
-      "FirstName": "Pinaki",
-      "LastName": "Ray",
+      "FirstName": "Rahul",
+      "LastName": "Singh",
       "Email": "pinaki.bpd2001@gmail.com",
       "Role": "mentor",
       "Password": "123"
@@ -23,6 +23,14 @@
       "Email": "ajay@student.com",
       "Role": "student",
       "Password": "124"
+    },
+    {
+      "id": "988f",
+      "FirstName": "manoj",
+      "LastName": "mishra",
+      "Email": "manoj@student.com",
+      "Role": "student",
+      "Password": "123"
     }
   ]
 }
