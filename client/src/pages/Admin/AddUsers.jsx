@@ -32,6 +32,7 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
 
     console.log("Form Submitted: ", data);
     reset();
+    closeForm();
   };
 
   return (
@@ -47,7 +48,7 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
         </p>
       </header>
 
-      <form className="py-3" onSubmit={handleSubmit(onSubmit)}>
+      <form className="py-3 relative" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex gap-4 pb-3">
           {/* First Name */}
           <div>
@@ -156,13 +157,15 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
             <p className="text-xs text-red-600">{errors.userPassword.message}</p>
           )}
         </div>
-
+        
+        <div className = "w-[100%] bottom-0" >
         <button
           type="submit"
           className="py-2 w-full bg-black text-white rounded-lg mt-4"
         >
           Add
         </button>
+        </div>
       </form>
     </div>
   );

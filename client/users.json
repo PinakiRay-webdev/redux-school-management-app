@@ -1,28 +1,5 @@
 {
   "users": [
-    {
-      "id": "ed22",
-      "FirstName": "Rohan",
-      "LastName": "Ray",
-      "Email": "Rohan@mentor.com",
-      "Role": "mentor",
-      "Password": "123"
-    },
-    {
-      "id": "4528",
-      "FirstName": "Ajay",
-      "LastName": "meeru",
-      "Email": "ajay@student.com",
-      "Role": "student",
-      "Password": "123"
-    },
-    {
-      "id": "c472",
-      "FirstName": "Bikash",
-      "LastName": "kumar",
-      "Email": "bikash@student.com",
-      "Role": "student",
-      "Password": "123"
-    }
+
   ]
 }

@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TbMessageCircleUser, TbUserX } from "react-icons/tb";
 import { FaUserGraduate, FaUserTag } from "react-icons/fa";
+import { LiaUserEditSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { CiMenuKebab } from "react-icons/ci";
-import { getUsers } from "../../../Redux/slice/userSlice";
+import { deleteUser, getUsers } from "../../../Redux/slice/userSlice";
+import EditUsers from "../EditUsers";
 const AdminStudent = () => {
   const usersData = useSelector((state) =>
     state.user.users.filter((role) => role.Role === "student")
@@ -14,6 +16,14 @@ const AdminStudent = () => {
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+  const [isEditActivate, setIsEditActivate] = useState("scale-0");
+  const [studentId, setStudentId] = useState(null)
+
+  const openEditForm = (id) =>{
+    setIsEditActivate("scale-100");
+    setStudentId(id)
+  }
 
   return (
     <div className="w-full h-fit pl-32">
@@ -50,22 +60,28 @@ const AdminStudent = () => {
                   <p>{Element.Role}</p>
                 </div>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-5" >
                   <p className="text-xl cursor-pointer">
                     <TbMessageCircleUser />
                   </p>
-                </div>
 
-                <div className="flex items-center gap-1">
-                  <p className="text-xl cursor-pointer text-red-600">
+                  <p onClick={()=>openEditForm(Element.id)} className="text-xl cursor-pointer">
+                    <LiaUserEditSolid />
+                  </p>
+
+                  <p onClick={()=>dispatch(deleteUser(Element.id))} className="text-xl cursor-pointer text-red-600">
                     <TbUserX />
                   </p>
                 </div>
+
               </div>
             </div>
           ))}
         </div>
       </div>
+
+          <EditUsers isEditActivate = {isEditActivate} setIsEditActivate = {setIsEditActivate} studentId = {studentId} />
+
     </div>
   );
 };
