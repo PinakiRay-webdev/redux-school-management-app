@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { TbMessageCircleUser , TbUserX } from "react-icons/tb";
-import { FaUserGraduate , FaUserTag } from "react-icons/fa";
+import { TbMessageCircleUser, TbUserX } from "react-icons/tb";
+import { FaUserGraduate, FaUserTag } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { CiMenuKebab } from "react-icons/ci";
 import { getUsers } from "../../../Redux/slice/userSlice";
 const AdminStudent = () => {
@@ -17,7 +18,7 @@ const AdminStudent = () => {
   return (
     <div className="w-full h-fit pl-32">
       <div className="px-3 py-5">
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-4 gap-6">
           {usersData.map((Element, id) => (
             <div
               className="rounded-lg bg-[#eaf4f4] py-3 px-5 shadow-lg relative "
@@ -34,22 +35,31 @@ const AdminStudent = () => {
                   </p>
                 </div>
 
-                <i className="absolute top-2 right-5  border border-zinc-600 rounded-full p-1 cursor-pointer" ><CiMenuKebab/></i>
+                <Link to={`/admin/student/${Element.id}`} >                
+                <i className="absolute top-2 right-5  border border-zinc-600 rounded-full p-1 cursor-pointer">
+                  <CiMenuKebab />
+                </i>
+                </Link>
               </header>
 
               <div className="flex items-center justify-between pt-6">
-                <div className="flex items-start gap-1" >
-                  <p className="text-xl" ><FaUserTag/></p>
+                <div className="flex items-start gap-1">
+                  <p className="text-xl">
+                    <FaUserTag />
+                  </p>
                   <p>{Element.Role}</p>
                 </div>
 
-                <div className="flex items-center gap-1" >
-                  <p className="text-xl cursor-pointer" ><TbMessageCircleUser/></p>
+                <div className="flex items-center gap-1">
+                  <p className="text-xl cursor-pointer">
+                    <TbMessageCircleUser />
+                  </p>
                 </div>
 
-                
-                <div className="flex items-center gap-1" >
-                  <p className="text-xl cursor-pointer text-red-600" ><TbUserX/></p>
+                <div className="flex items-center gap-1">
+                  <p className="text-xl cursor-pointer text-red-600">
+                    <TbUserX />
+                  </p>
                 </div>
               </div>
             </div>

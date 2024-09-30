@@ -15,6 +15,14 @@
       "Email": "ajay@student.com",
       "Role": "student",
       "Password": "123"
+    },
+    {
+      "id": "c472",
+      "FirstName": "Bikash",
+      "LastName": "kumar",
+      "Email": "bikash@student.com",
+      "Role": "student",
+      "Password": "123"
     }
   ]
 }

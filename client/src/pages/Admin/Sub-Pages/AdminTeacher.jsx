@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { TbMessageCircleUser , TbUserX } from "react-icons/tb";
 import { FaUserTie , FaUserTag } from "react-icons/fa";
@@ -32,9 +33,11 @@ const AdminTeacher = () => {
                 <p className="text-sm font-bold text-center">{Element.Email}</p>
               </div>
 
+              <Link to={`/admin/teacher/${Element.id}`} >              
               <i className="absolute top-2 right-5  border border-zinc-600 rounded-full p-1 cursor-pointer">
                 <CiMenuKebab />
               </i>
+              </Link>
             </header>
 
             <div className="flex items-center justify-between pt-6">

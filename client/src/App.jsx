@@ -13,6 +13,8 @@ import Chat from "./pages/chat/Chat";
 import AdminSettings from "./pages/Admin/Sub-Pages/AdminSettings";
 import MentorHome from "./pages/Mentor/MentorHome";
 import StudentHome from "./pages/Student/StudentHome";
+import StudentDes from "./pages/Admin/Sub-Pages/StudentDes";
+import TeacherDes from "./pages/Admin/Sub-Pages/TeacherDes";
 const App = () => {
   const myRouter = createBrowserRouter([
     {
@@ -44,12 +46,32 @@ const App = () => {
       )
     },
     {
+      path: "/admin/teacher/:id",
+      element:(
+        <>
+        <Navbar/>
+        <AdminSideBar/>
+        <TeacherDes/>
+        </>
+      )
+    },
+    {
       path: "/adminDashboard/student",
       element:(
         <>
         <Navbar/>
         <AdminSideBar/>
         <AdminStudent/>
+        </>
+      )
+    },
+        {
+      path: "/admin/student/:id",
+      element:(
+        <>
+        <Navbar/>
+        <AdminSideBar/>
+        <StudentDes/>
         </>
       )
     },
