@@ -134,6 +134,16 @@ const App = () => {
       )
     },
     {
+      path: "/mentor/student/:id",
+      element:(
+        <>
+        <Navbar/>
+        <MentorSidebar/>
+        <StudentDes/>
+        </>
+      )
+    },
+    {
       path: "/studentDashboard/dashboard",
       element:(
         <>

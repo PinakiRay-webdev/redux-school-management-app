@@ -2,23 +2,33 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TbMessageCircleUser, TbUserX } from "react-icons/tb";
 import { TfiBlackboard } from "react-icons/tfi";
+import { MdCreditScore } from "react-icons/md";
 import { FaUserGraduate, FaUserTag } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { CiMenuKebab } from "react-icons/ci";
 import { deleteUser, getUsers } from "../../../Redux/slice/userSlice";
 import EditUsers from "../EditUsers";
+import AssignMarks from "../../Mentor/AssignMarks";
 const AdminStudent = () => {
   const usersData = useSelector((state) =>
     state.user.users.filter((role) => role.Role === "student")
   );
   const dispatch = useDispatch();
 
+  const isAdminLoggedIn = JSON.parse(localStorage.getItem("adminCredentials"));
+  const isMentorLoggedIn = JSON.parse(
+    localStorage.getItem("mentorCredentials")
+  );
+
+  const user = isAdminLoggedIn ? "admin" : "mentor";
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
   const [isEditActivate, setIsEditActivate] = useState("scale-0");
+  const [isMarksActivate, setIsMarksActivate] = useState("scale-0");
   const [userID, setUserID] = useState(null);
 
   const openEditForm = (id) => {
@@ -26,12 +36,16 @@ const AdminStudent = () => {
     setUserID(id);
   };
 
-  let filterNav = [...new Set(usersData.map((Element)=> Element.Class))];
+  const openMarksForm = (id) =>{
+    setIsMarksActivate("scale-100");
+    setUserID(id);
+  }
+
+  let filterNav = [...new Set(usersData.map((Element) => Element.Class))];
 
   return (
     <div className="w-full h-fit pl-32">
       {/* mini navbar section for filter */}
-
 
       <div className="px-3 py-5">
         <div className="grid grid-cols-4 gap-6">
@@ -61,7 +75,9 @@ const AdminStudent = () => {
                   </div>
                 </div>
 
-                <Link to={`/admin/student/${Element.id}`}>
+                {/* view more menu  */}
+
+                <Link to={`/${user}/student/${Element.id}`}>
                   <i className="absolute top-2 right-5  border border-zinc-600 rounded-full p-1 cursor-pointer">
                     <CiMenuKebab />
                   </i>
@@ -81,19 +97,31 @@ const AdminStudent = () => {
                     <TbMessageCircleUser />
                   </p>
 
-                  <p
-                    onClick={() => openEditForm(Element.id)}
-                    className="text-xl cursor-pointer"
-                  >
-                    <LiaUserEditSolid />
-                  </p>
+                  {isAdminLoggedIn && (
+                    <p
+                      onClick={() => openEditForm(Element.id)}
+                      className="text-xl cursor-pointer"
+                    >
+                      <LiaUserEditSolid />
+                    </p>
+                  )}
 
-                  <p
-                    onClick={() => dispatch(deleteUser(Element.id))}
-                    className="text-xl cursor-pointer text-red-600"
-                  >
-                    <TbUserX />
-                  </p>
+                  {isAdminLoggedIn && (
+                    <p
+                      onClick={() => dispatch(deleteUser(Element.id))}
+                      className="text-xl cursor-pointer text-red-600"
+                    >
+                      <TbUserX />
+                    </p>
+                  )}
+
+                  {isMentorLoggedIn && (
+                    <div className="flex items-center gap-1">
+                      <p onClick={() => openMarksForm(Element.id)} className="text-xl cursor-pointer text-red-600 flex">
+                        <MdCreditScore />
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -106,6 +134,14 @@ const AdminStudent = () => {
         setIsEditActivate={setIsEditActivate}
         userID={userID}
       />
+
+      {isMentorLoggedIn && (
+        <AssignMarks
+        isMarksActivate={isMarksActivate}
+        setIsMarksActivate={setIsMarksActivate}
+          userID={userID}
+        />
+      )}
     </div>
   );
 };

@@ -6,13 +6,14 @@ import githubIcon from '../assets/github.svg';
 import googleIcon from '../assets/google.svg';
 import facebookIcon from '../assets/facebook.svg';
 import adminPic from '../assets/adminPic.svg';
+
 import { MdOutlineDashboard } from "react-icons/md";
 import { PiStudent , PiChalkboardTeacher } from "react-icons/pi";
 import { GoBook } from "react-icons/go";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { AiOutlineMessage } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
-import { Icons } from 'react-toastify';
+import { IoIosCloseCircle } from "react-icons/io";
 
 export const closeEyes = closeEyesIcon
 export const openEyes = openEyesIcon
@@ -29,6 +30,7 @@ export const subject = GoBook
 export const earnings = LiaRupeeSignSolid
 export const message = AiOutlineMessage
 export const settings = IoSettingsOutline
+export const closeBtn = IoIosCloseCircle
 
 export const sideBarNav = [
     {
