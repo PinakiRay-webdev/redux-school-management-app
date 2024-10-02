@@ -1,7 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Auth/Login";
-import AdminHome from "./pages/Admin/AdminHome";
 import Navbar from "./components/Navbar";
 import AdminSideBar from "./pages/Admin/AdminSideBar";
 import AdminDashboard from "./pages/Admin/Sub-Pages/AdminDashboard";
@@ -11,10 +10,11 @@ import AdminSubjects from "./pages/Admin/Sub-Pages/AdminSubjects";
 import AdminEarnings from "./pages/Admin/Sub-Pages/AdminEarnings";
 import Chat from "./pages/chat/Chat";
 import AdminSettings from "./pages/Admin/Sub-Pages/AdminSettings";
-import MentorHome from "./pages/Mentor/MentorHome";
 import StudentHome from "./pages/Student/StudentHome";
 import StudentDes from "./pages/Admin/Sub-Pages/StudentDes";
 import TeacherDes from "./pages/Admin/Sub-Pages/TeacherDes";
+import MentorDashboard from "./pages/Mentor/sub-pages/MentorDashboard";
+import MentorSidebar from "./pages/Mentor/MentorSidebar";
 const App = () => {
   const myRouter = createBrowserRouter([
     {
@@ -118,7 +118,18 @@ const App = () => {
       element:(
         <>
         <Navbar/>
-        <MentorHome/>
+        <MentorSidebar/>
+        <MentorDashboard/>
+        </>
+      )
+    },
+    {
+      path: "/mentorDashboard/students",
+      element:(
+        <>
+        <Navbar/>
+        <MentorSidebar/>
+        <AdminStudent/>
         </>
       )
     },

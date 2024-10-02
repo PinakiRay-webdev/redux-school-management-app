@@ -85,3 +85,16 @@ export const Admin_Dashboard_Stats = [
         role : 'subjects',
     }
 ]
+
+export const mentorSideBar = [
+    {
+        id : 1,
+        icon : dashboard,
+        item : "dashboard"
+    },
+    {
+        id : 2,
+        icon : student,
+        item : 'students'
+    }
+] 
