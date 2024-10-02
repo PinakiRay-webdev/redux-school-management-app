@@ -162,10 +162,11 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
         </>)}
         {errors.mentorSubject && <p className="text-xs text-red-600" >{errors.mentorSubject.message}</p>}
         
+        {/* class assign section for student  */}
         {selectedRole === 'student' && (<>
           <label className="text-sm font-semibold text-zinc-600" >class of student</label>
           <br />
-          <input type="text" {...register("studentClass" , {
+          <input type="number" {...register("studentClass" , {
             required:{
               value : true,
               message : 'This feild is required'
