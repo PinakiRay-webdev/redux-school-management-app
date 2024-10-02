@@ -5,23 +5,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { IoIosCloseCircle } from "react-icons/io";
 import { getUsers } from "../../Redux/slice/userSlice";
 
-const EditUsers = ({ isEditActivate, setIsEditActivate, studentId }) => {
+const EditUsers = ({ isEditActivate, setIsEditActivate, userID }) => {
   const closeForm = () => {
     setIsEditActivate("scale-0");
   };
 
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
-  const studentData = useSelector((state) => state.user.users.find((e) => e.id === studentId));
+  const userData = useSelector((state) => state.user.users.find((e) => e.id === userID));
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (studentData) {
-      setValue("userFirstName", studentData.FirstName);
-      setValue("userLastName", studentData.LastName);
-      setValue("userEmail", studentData.Email);
+    if (userData) {
+      setValue("userFirstName", userData.FirstName);
+      setValue("userLastName", userData.LastName);
+      setValue("userEmail", userData.Email);
     }
-  }, [studentData, setValue]);
+  }, [userData, setValue]);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -29,7 +29,7 @@ const EditUsers = ({ isEditActivate, setIsEditActivate, studentId }) => {
 
   const onSubmit = (data) => {
     const updatedUser = {
-      id: studentId,
+      id: userID,
       FirstName: data.userFirstName,  // Only update the first name
       LastName: data.userLastName,    // Only update the last name
       Email: data.userEmail,          // Only update the email

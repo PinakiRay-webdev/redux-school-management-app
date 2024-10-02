@@ -1,5 +1,13 @@
 {
   "users": [
-
+    {
+      "id": "0614",
+      "FirstName": "Ajey",
+      "LastName": "Patel",
+      "Email": "ajey@mentor.com",
+      "Role": "mentor",
+      "Password": "123",
+      "class": "physics"
+    }
   ]
 }

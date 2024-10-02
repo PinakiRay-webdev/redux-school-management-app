@@ -10,21 +10,32 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+    watch
+  } = useForm({
+    defaultValues : {
+      userRole : ""
+    }
+  });
 
   const dispatch = useDispatch(); // Hook to dispatch actions
+
+  const selectedRole = watch("userRole");
 
   const closeForm = () => {
     setIsFormOpen("scale-0");
   };
 
   const onSubmit = async (data) => {
-    const newUser = {
+
+
+    const newUser =  {
       FirstName: data.userFirstName,
       LastName: data.userLastName,
       Email: data.userEmail,
       Role: data.userRole,
       Password: data.userPassword,
+      ...(data.studentClass && {Class : data.studentClass}),
+      ...(data.mentorSubject && {Department : data.mentorSubject})
     };
 
     // Dispatch the createUser action to add the user to JSON server via Redux
@@ -124,20 +135,44 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
         <div className="pb-3">
           <label className="text-sm font-semibold text-zinc-600">User Role:</label>
           <br />
-          <input
-            type="text"
-            className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
-            {...register("userRole", {
-              required: {
-                value: true,
-                message: "This field is required",
-              },
-            })}
-          />
+          <select {...register("userRole" , {
+            required : {
+              value : true,
+              message : "This feild is required"
+            }
+          })} className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300" >
+            <option value="mentor">mentor</option>
+            <option value="student">student</option>
+          </select>
           {errors.userRole && (
             <p className="text-xs text-red-600">{errors.userRole.message}</p>
           )}
         </div>
+        
+        {/* subject assign section for mentor  */}
+        {selectedRole === 'mentor' && (<>
+          <label className="text-sm font-semibold text-zinc-600" >Assign the subject</label>
+          <br />
+          <input type="text" {...register("mentorSubject" , {
+            required:{
+              value : true,
+              message : 'This feild is required'
+            }
+          })}  className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300" />
+        </>)}
+        {errors.mentorSubject && <p className="text-xs text-red-600" >{errors.mentorSubject.message}</p>}
+        
+        {selectedRole === 'student' && (<>
+          <label className="text-sm font-semibold text-zinc-600" >class of student</label>
+          <br />
+          <input type="text" {...register("studentClass" , {
+            required:{
+              value : true,
+              message : 'This feild is required'
+            }
+          })}  className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300" />
+        </>)}
+        {errors.studentClass && <p className="text-xs text-red-600" >{errors.studentClass.message}</p>}
 
         {/* Password */}
         <div className="pb-3">

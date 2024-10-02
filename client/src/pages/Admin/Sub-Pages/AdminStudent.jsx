@@ -18,11 +18,11 @@ const AdminStudent = () => {
   }, [dispatch]);
 
   const [isEditActivate, setIsEditActivate] = useState("scale-0");
-  const [studentId, setStudentId] = useState(null)
+  const [userID, setUserID] = useState(null)
 
   const openEditForm = (id) =>{
     setIsEditActivate("scale-100");
-    setStudentId(id)
+    setUserID(id)
   }
 
   return (
@@ -80,7 +80,7 @@ const AdminStudent = () => {
         </div>
       </div>
 
-          <EditUsers isEditActivate = {isEditActivate} setIsEditActivate = {setIsEditActivate} studentId = {studentId} />
+          <EditUsers isEditActivate = {isEditActivate} setIsEditActivate = {setIsEditActivate} userID = {userID} />
 
     </div>
   );

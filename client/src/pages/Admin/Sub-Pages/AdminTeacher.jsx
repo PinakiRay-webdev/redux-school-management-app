@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import { Link } from "react-router-dom";
+import EditUsers from "../EditUsers";
 import { useSelector, useDispatch } from "react-redux";
 import { TbMessageCircleUser , TbUserX } from "react-icons/tb";
 import { FaUserTie , FaUserTag } from "react-icons/fa";
+import { LiaUserEditSolid } from "react-icons/lia";
 import { CiMenuKebab } from "react-icons/ci";
 import { getUsers } from "../../../Redux/slice/userSlice";
+
 const AdminTeacher = () => {
   const userData = useSelector((state) =>
     state.user.users.filter((role) => role.Role === "mentor")
@@ -13,6 +16,14 @@ const AdminTeacher = () => {
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+
+  const [isEditActivate, setIsEditActivate] = useState("scale-0");
+  const [userID, setUserID] = useState(null)
+
+  const openEditForm = (id) =>{
+    setIsEditActivate("scale-100");
+    setUserID(id)
+  }
 
   return (
     <div className="w-full h-fit pl-32">
@@ -48,22 +59,27 @@ const AdminTeacher = () => {
                 <p>{Element.Role}</p>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-5">
                 <p className="text-xl cursor-pointer">
                   <TbMessageCircleUser />
                 </p>
-              </div>
-
-              <div className="flex items-center gap-1">
+                <p  onClick={()=>openEditForm(Element.id)} className="text-xl cursor-pointer">
+                  <LiaUserEditSolid />
+                </p>
                 <p className="text-xl cursor-pointer text-red-600">
                   <TbUserX />
                 </p>
               </div>
+
             </div>
           </div>
         ))}
         </div>
       </div>
+
+      <EditUsers isEditActivate = {isEditActivate} setIsEditActivate = {setIsEditActivate} userID = {userID} />
+
+
     </div>
   );
 };
