@@ -11,8 +11,9 @@ import { deleteUser, getUsers } from "../../../Redux/slice/userSlice";
 import EditUsers from "../EditUsers";
 import AssignMarks from "../../Mentor/AssignMarks";
 const AdminStudent = () => {
+  
   const usersData = useSelector((state) =>
-    state.user.users.filter((role) => role.Role === "student")
+    state.user.students.filter((role) => role.Role === "student")
   );
   const dispatch = useDispatch();
 

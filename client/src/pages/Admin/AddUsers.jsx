@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { IoIosCloseCircle } from "react-icons/io";
-import { createUser } from "../../Redux/slice/userSlice"; // Adjust the path
+import { createMentor, createUser } from "../../Redux/slice/userSlice"; // Adjust the path
 
 const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
   const {
@@ -10,14 +10,14 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    watch,
   } = useForm({
-    defaultValues : {
-      userRole : ""
-    }
+    defaultValues: {
+      userRole: "",
+    },
   });
 
-  const dispatch = useDispatch(); // Hook to dispatch actions
+  const dispatch = useDispatch();
 
   const selectedRole = watch("userRole");
 
@@ -26,23 +26,28 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
   };
 
   const onSubmit = async (data) => {
-
-
-    const newUser =  {
+    const newUser = {
       FirstName: data.userFirstName,
       LastName: data.userLastName,
       Email: data.userEmail,
       Role: data.userRole,
       Password: data.userPassword,
-      ...(data.studentClass && {Class : data.studentClass}),
-      ...(data.mentorSubject && {Department : data.mentorSubject}),
-  
+      Class : data.studentClass,
+      Marks : "",
+      Grade : ""
     };
 
-    // Dispatch the createUser action to add the user to JSON server via Redux
-    dispatch(createUser(newUser));
+    const newMentor = {
+      FirstName: data.userFirstName,
+      LastName: data.userLastName,
+      Email: data.userEmail,
+      Role: data.userRole,
+      Password: data.userPassword,
+      Department : data.mentorSubject
+    }
 
-    console.log("Form Submitted: ", data);
+    // Dispatch the createUser action to add the user to JSON server via Redux
+    selectedRole === 'student' ? dispatch(createUser(newUser)) : dispatch(createMentor(newMentor))
     reset();
     closeForm();
   };
@@ -111,7 +116,9 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
 
         {/* Email */}
         <div className="pb-3">
-          <label className="text-sm font-semibold text-zinc-600">Email ID:</label>
+          <label className="text-sm font-semibold text-zinc-600">
+            Email ID:
+          </label>
           <br />
           <input
             type="email"
@@ -134,14 +141,19 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
 
         {/* Role */}
         <div className="pb-3">
-          <label className="text-sm font-semibold text-zinc-600">User Role:</label>
+          <label className="text-sm font-semibold text-zinc-600">
+            User Role:
+          </label>
           <br />
-          <select {...register("userRole" , {
-            required : {
-              value : true,
-              message : "This feild is required"
-            }
-          })} className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300" >
+          <select
+            {...register("userRole", {
+              required: {
+                value: true,
+                message: "This feild is required",
+              },
+            })}
+            className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
+          >
             <option value="mentor">mentor</option>
             <option value="student">student</option>
           </select>
@@ -149,36 +161,58 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
             <p className="text-xs text-red-600">{errors.userRole.message}</p>
           )}
         </div>
-        
+
         {/* subject assign section for mentor  */}
-        {selectedRole === 'mentor' && (<>
-          <label className="text-sm font-semibold text-zinc-600" >Assign the subject</label>
-          <br />
-          <input type="text" {...register("mentorSubject" , {
-            required:{
-              value : true,
-              message : 'This feild is required'
-            }
-          })}  className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300" />
-        </>)}
-        {errors.mentorSubject && <p className="text-xs text-red-600" >{errors.mentorSubject.message}</p>}
-        
+        {selectedRole === "mentor" && (
+          <>
+            <label className="text-sm font-semibold text-zinc-600">
+              Assign the subject
+            </label>
+            <br />
+            <input
+              type="text"
+              {...register("mentorSubject", {
+                required: {
+                  value: true,
+                  message: "This feild is required",
+                },
+              })}
+              className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
+            />
+          </>
+        )}
+        {errors.mentorSubject && (
+          <p className="text-xs text-red-600">{errors.mentorSubject.message}</p>
+        )}
+
         {/* class assign section for student  */}
-        {selectedRole === 'student' && (<>
-          <label className="text-sm font-semibold text-zinc-600" >class of student</label>
-          <br />
-          <input type="number" {...register("studentClass" , {
-            required:{
-              value : true,
-              message : 'This feild is required'
-            }
-          })}  className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300" />
-        </>)}
-        {errors.studentClass && <p className="text-xs text-red-600" >{errors.studentClass.message}</p>}
+        {selectedRole === "student" && (
+          <>
+            <label className="text-sm font-semibold text-zinc-600">
+              class of student
+            </label>
+            <br />
+            <input
+              type="number"
+              {...register("studentClass", {
+                required: {
+                  value: true,
+                  message: "This feild is required",
+                },
+              })}
+              className="w-full rounded-lg py-2 px-3 outline-none ring-1 ring-blue-300"
+            />
+          </>
+        )}
+        {errors.studentClass && (
+          <p className="text-xs text-red-600">{errors.studentClass.message}</p>
+        )}
 
         {/* Password */}
         <div className="pb-3">
-          <label className="text-sm font-semibold text-zinc-600">Password:</label>
+          <label className="text-sm font-semibold text-zinc-600">
+            Password:
+          </label>
           <br />
           <input
             type="password"
@@ -191,17 +225,19 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
             })}
           />
           {errors.userPassword && (
-            <p className="text-xs text-red-600">{errors.userPassword.message}</p>
+            <p className="text-xs text-red-600">
+              {errors.userPassword.message}
+            </p>
           )}
         </div>
-        
-        <div className = "w-[100%] bottom-0" >
-        <button
-          type="submit"
-          className="py-2 w-full bg-black text-white rounded-lg mt-4"
-        >
-          Add
-        </button>
+
+        <div className="w-[100%] bottom-0">
+          <button
+            type="submit"
+            className="py-2 w-full bg-black text-white rounded-lg mt-4"
+          >
+            Add
+          </button>
         </div>
       </form>
     </div>

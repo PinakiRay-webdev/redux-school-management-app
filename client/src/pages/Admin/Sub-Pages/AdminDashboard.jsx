@@ -1,7 +1,7 @@
 import React, { useEffect , useState} from "react";
 import {PiUserPlus } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../../Redux/slice/userSlice";
+import { getMentors, getUsers } from "../../../Redux/slice/userSlice";
 import { Admin_Dashboard_Stats } from "../../../constants/constants";
 import AddUsers from '../AddUsers'
 
@@ -13,25 +13,32 @@ const AdminDashboard = () => {
   const handleForm = () =>{
       setIsFormOpen("scale-100")
   }
-  const userData = useSelector((state) => state.user.users);
+  const userData = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+
+
+  const students = userData.students
+  const mentors = userData.mentors
+
+  const handleUsers = (role) =>{
+    if(role === 'students'){
+      return students.length;
+    } else if (role === 'mentors') {
+      return mentors.length;
+    } else {
+      return 0;
+    }
+  }
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  const students = userData.filter((role) => role.Role === "student");
-  const mentors = userData.filter((role) => role.Role === "mentor");
+  useEffect(() => {
+    dispatch(getMentors());
+  },[dispatch])
 
-  const handleNumberOfRole = (role) =>{
-    if(role === 'students') {
-      return students.length;
-    } else if (role === 'mentors') {
-      return mentors.length;
-    } else {
-      return "0"
-    }
-  }
 
   return (
     <div className="w-full h-fit pl-32">
@@ -52,7 +59,7 @@ const AdminDashboard = () => {
                   {"Total "+Element.role}
                 </p>
                 <p className="text-5xl font-black text-[#004b23]">
-                  {handleNumberOfRole(Element.role)}
+                  {handleUsers(Element.role)}
                 </p>
               </div>
             </div>

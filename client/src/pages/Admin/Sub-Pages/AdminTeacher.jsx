@@ -7,15 +7,15 @@ import { PiBooksDuotone } from "react-icons/pi";
 import { FaUserTie, FaUserTag } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { CiMenuKebab } from "react-icons/ci";
-import { getUsers } from "../../../Redux/slice/userSlice";
+import { getMentors} from "../../../Redux/slice/userSlice";
 
 const AdminTeacher = () => {
   const userData = useSelector((state) =>
-    state.user.users.filter((role) => role.Role === "mentor")
+    state.user.mentors.filter((role) => role.Role === "mentor")
   );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(getMentors());
   }, [dispatch]);
 
   const [isEditActivate, setIsEditActivate] = useState("scale-0");

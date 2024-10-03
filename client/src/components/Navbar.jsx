@@ -22,7 +22,7 @@ const Navbar = () => {
     const admin = JSON.parse(localStorage.getItem('adminCredentials'));
     const student = JSON.parse(localStorage.getItem('studentCredentials'));
 
-    const loggedInUser = userData.users.find(u => u.Email === (admin ? admin.admin_mail : mentor ? mentor.mentor_mail : student.student_mail));
+    const loggedInUser = userData.students.find(u => u.Email === (admin ? admin.admin_mail : mentor ? mentor.mentor_mail : student.student_mail));
 
     const greet = () => {
         if(hours >= 5 && hours < 12) {

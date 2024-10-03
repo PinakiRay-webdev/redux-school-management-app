@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { updateUser } from "../../Redux/slice/userSlice";
+import { getMentors, updateUser } from "../../Redux/slice/userSlice";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { IoIosCloseCircle } from "react-icons/io";
@@ -12,7 +12,8 @@ const EditUsers = ({ isEditActivate, setIsEditActivate, userID }) => {
 
   const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
-  const userData = useSelector((state) => state.user.users.find((e) => e.id === userID));
+  const userData = useSelector((state) => state.user.students.find((e) => e.id === userID));
+  const mentorData = useSelector((state) => state.user.mentors.find((e) => e.id === userID));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +21,19 @@ const EditUsers = ({ isEditActivate, setIsEditActivate, userID }) => {
       setValue("userFirstName", userData.FirstName);
       setValue("userLastName", userData.LastName);
       setValue("userEmail", userData.Email);
+    } else if (mentorData) {
+      setValue("userFirstName", mentorData.FirstName);
+      setValue("userLastName", mentorData.LastName);
+      setValue("userEmail", mentorData.Email);
     }
-  }, [userData, setValue]);
+  }, [userData, mentorData, setValue]);
 
   useEffect(() => {
     dispatch(getUsers());
+  }, [dispatch]);
+  
+  useEffect(() => {
+    dispatch(getMentors());
   }, [dispatch]);
 
   const onSubmit = (data) => {

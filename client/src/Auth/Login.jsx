@@ -38,7 +38,9 @@ const Login = () => {
   const onSubmit = async (data) => {
     await delay(2)
 
-    const validUser = userData.users.find(user => user.Email === data.userEmail && user.Password === data.userPassword)
+    let currentUser = 'students' || 'mentors'
+
+    const validUser = userData.students.find(user => user.Email === data.userEmail && user.Password === data.userPassword) || userData.mentors.find(user => user.Email === data.userEmail && user.Password === data.userPassword)
     //admin login 
     if(data.userEmail.trim() === import.meta.env.VITE_ADMINEMAIL.trim() && data.userPassword.trim() === import.meta.env.VITE_ADMINPASSWORD.trim()){
       toast.success("Logged in successfully" , {theme: "dark"})
