@@ -35,7 +35,8 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
       Role: data.userRole,
       Password: data.userPassword,
       ...(data.studentClass && {Class : data.studentClass}),
-      ...(data.mentorSubject && {Department : data.mentorSubject})
+      ...(data.mentorSubject && {Department : data.mentorSubject}),
+  
     };
 
     // Dispatch the createUser action to add the user to JSON server via Redux

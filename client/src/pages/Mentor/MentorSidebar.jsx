@@ -15,8 +15,8 @@ const MentorSidebar = () => {
 
         <div className='flex flex-col items-center absolute w-full top-[50%] translate-y-[-50%] ' >
             {mentorSideBar.map((Element , id)=>(
-                <Link to={`/mentorDashboard/${Element.item}`} >                
-                <div className='flex flex-col items-center gap-1 my-7 cursor-pointer' key={id} >
+                <Link key={id} to={`/mentorDashboard/${Element.item}`} >                
+                <div className='flex flex-col items-center gap-1 my-7 cursor-pointer'>
                     <p className='text-lg text-[#344e41] font-bold' >{<Element.icon/>}</p>
                     <p className='text-sm text-[#344e41] font-bold' >{Element.item}</p>
                 </div>

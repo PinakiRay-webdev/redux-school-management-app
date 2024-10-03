@@ -16,17 +16,22 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
   });
 
 
-  const onSubmit = (data) => {
+  const selectedUser = useSelector((state) =>
+    state.user.users.find((e) => e.id === userID)
+  );
 
+
+  const onSubmit = (data) => {
+    Object.assign(selectedUser , {'marks' : data.marks , 'grade' : data.grade})
+    console.log(selectedUser);
+    
   };
 
   const closeForm = () => {
     setIsMarksActivate("scale-0");
   };
 
-  const selectedUser = useSelector((state) =>
-    state.user.users.find((e) => e.id === userID)
-  );
+
 
   if(selectedUser)
   {
@@ -42,7 +47,7 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
           <IoIosCloseCircle />
         </p>
       </header>
-      <form onSubmit={handleSubmit(onsubmit)} >
+      <form onSubmit={handleSubmit(onSubmit)} >
         <label>Name of the student</label>
         <br />
         <input
