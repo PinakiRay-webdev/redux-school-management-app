@@ -10,11 +10,21 @@ import AdminSubjects from "./pages/Admin/Sub-Pages/AdminSubjects";
 import AdminEarnings from "./pages/Admin/Sub-Pages/AdminEarnings";
 import Chat from "./pages/chat/Chat";
 import AdminSettings from "./pages/Admin/Sub-Pages/AdminSettings";
-import StudentHome from "./pages/Student/StudentHome";
 import StudentDes from "./pages/Admin/Sub-Pages/StudentDes";
 import TeacherDes from "./pages/Admin/Sub-Pages/TeacherDes";
 import MentorDashboard from "./pages/Mentor/sub-pages/MentorDashboard";
 import MentorSidebar from "./pages/Mentor/MentorSidebar";
+import StudentSideBar from "./pages/Student/StudentSideBar";
+import StudentDashboard from "./pages/Student/sub-pages/StudentDashboard";
+import StudentSubjects from "./pages/Student/sub-pages/StudentSubjects"
+import StudentClasses from "./pages/Student/sub-pages/StudentClasses"
+import StudentStats from './pages/Student/sub-pages/StudentStats'
+import StudentMessages from './pages/Student/sub-pages/StudentMessages'
+import StudentAssignments from './pages/Student/sub-pages/StudentAssignments'
+import StudentSettings from './pages/Student/sub-pages/StudentSettings'
+
+
+
 const App = () => {
   const myRouter = createBrowserRouter([
     {
@@ -148,7 +158,68 @@ const App = () => {
       element:(
         <>
         <Navbar/>
-        <StudentHome/>
+        <StudentSideBar/>
+        <StudentDashboard/>
+        </>
+      )
+    },
+    {
+      path: "/studentDashboard/subjects",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentSubjects/>
+        </>
+      )
+    },
+    {
+      path: "/studentDashboard/classes",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentClasses/>
+        </>
+      )
+    },
+    {
+      path : "/studentDashboard/statistics",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentStats/>
+        </>
+      )
+    },
+    {
+      path : "/studentDashboard/assignments",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentAssignments/>
+        </>
+      )
+    },
+    {
+      path : "/studentDashboard/messages",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentMessages/>
+        </>
+      )
+    },
+    {
+      path : "/studentDashboard/settings",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentSettings/>
         </>
       )
     }
