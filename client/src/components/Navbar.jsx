@@ -62,7 +62,7 @@ const Navbar = () => {
                             <div>
                                 <p>{admin ? admin.admin_mail : mentor ? mentor.mentor_mail : student.student_mail}</p>
                                 <p className='text-sm font-semibold opacity-80'>
-                                    {admin ? 'Admin' : mentor ? 'Mentor' : 'Student'}
+                                    {admin ? `Admin` : mentor ? `${mentor.department} Mentor` : `Student`}
                                 </p>
                             </div>
                             <p className='text-2xl'><MdKeyboardArrowRight /></p>

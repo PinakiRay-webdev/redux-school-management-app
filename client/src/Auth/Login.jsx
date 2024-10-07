@@ -64,7 +64,8 @@ const Login = () => {
           }, 2000);
           localStorage.setItem('mentorCredentials' , JSON.stringify({
             mentor_mail : data.userEmail,
-            role : role
+            role : role,
+            department : validUser.Department
           }))
         }
         

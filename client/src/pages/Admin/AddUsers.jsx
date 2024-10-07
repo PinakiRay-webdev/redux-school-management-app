@@ -33,8 +33,8 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
       Role: data.userRole,
       Password: data.userPassword,
       Class : data.studentClass,
-      Marks : "",
-      Grade : ""
+      Marks : {physics : "" , maths : "" , chemistry : "" , biology : "" , IT : ""},
+      avgMark : "",
     };
 
     const newMentor = {

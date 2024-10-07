@@ -25,7 +25,7 @@ const StudentSideBar = () => {
         ))}
         </div>
 
-      <button className='bg-black text-white w-full absolute py-3 bottom-0' >Logout</button>
+      <button onClick={logout} className='bg-black text-white w-full absolute py-3 bottom-0' >Logout</button>
     </div>
   )
 }

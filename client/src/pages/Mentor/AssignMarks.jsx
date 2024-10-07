@@ -23,11 +23,24 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
     state.user.students.find((e) => e.id === userID)
   );
 
+  const mentor = JSON.parse(localStorage.getItem("mentorCredentials"));
+
+  const department = mentor?.department;
+
+
   const onSubmit = (data) => {
+
+    const assignedMarks = {
+      physics : department === 'physics' ? data.marks : "",
+      maths : department === 'maths' ? data.marks : "",
+      chemistry : department === 'chemistry' ? data.marks : "",
+      biology : department === 'biology' ? data.marks : "",
+      IT : department === 'IT' ? data.marks : ""
+    }
+
     const updatedUser = {
       id: userID,
-      Marks: data.marks, // Only update the first name
-      Grade: data.grade, // Only update the last name
+      Marks: assignedMarks
     };
 
     dispatch(updateUser(updatedUser));
@@ -76,7 +89,8 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
         {errors.marks && (
           <p className="text-xs text-red-500">{errors.marks.message}</p>
         )}
-        <label>Assign Grade</label>
+
+        {/* <label>Assign Grade</label>
         <br />
         <select
           {...register("grade", {
@@ -97,7 +111,7 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
         </select>
         {errors.grade && (
           <p className="text-xs text-red-500">{errors.grade.message}</p>
-        )}
+        )} */}
 
         <button className="w-full py-2 mt-5 bg-black text-white">
           Make changes

@@ -7,7 +7,7 @@
       "Email": "Rohan@mentor.com",
       "Role": "mentor",
       "Password": "123",
-      "Department": "science"
+      "Department": "physics"
     },
     {
       "id": "47ac",
@@ -16,31 +16,26 @@
       "Email": "vinod@mentor.com",
       "Role": "mentor",
       "Password": "123",
-      "Department": "Biology"
+      "Department": "biology"
     }
   ],
   "students": [
     {
-      "id": "be25",
-      "FirstName": "naveen",
-      "LastName": "mohanty",
-      "Email": "naveen@student.com",
+      "id": "aceb",
+      "FirstName": "navin",
+      "LastName": "reddy",
+      "Email": "navin@student.com",
       "Role": "student",
       "Password": "123",
       "Class": "12",
-      "Marks": "45",
-      "Grade": "C"
-    },
-    {
-      "id": "3ee5",
-      "FirstName": "priya",
-      "LastName": "reddy",
-      "Email": "priya@student.com",
-      "Role": "student",
-      "Password": "123",
-      "Class": "11",
-      "Marks": "80",
-      "Grade": "B"
+      "Marks": {
+        "physics": "",
+        "maths": "",
+        "chemistry": "",
+        "biology": "77",
+        "IT": ""
+      },
+      "avgMark": ""
     }
   ]
 }
