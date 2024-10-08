@@ -7,7 +7,6 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
   const {
     register,
     handleSubmit,
-    watch,
     setValue,
     formState: { errors },
     reset
@@ -27,29 +26,42 @@ const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
 
   const department = mentor?.department;
 
-
-  const onSubmit = (data) => {
-
-    const assignedMarks = {
-      physics : department === 'physics' ? data.marks : "",
-      maths : department === 'maths' ? data.marks : "",
-      chemistry : department === 'chemistry' ? data.marks : "",
-      biology : department === 'biology' ? data.marks : "",
-      IT : department === 'IT' ? data.marks : ""
-    }
-
-    const updatedUser = {
-      id: userID,
-      Marks: assignedMarks
-    };
-
-    dispatch(updateUser(updatedUser));
-    reset();
-  };
-
+  
+  
+  
   const closeForm = () => {
     setIsMarksActivate("scale-0");
   };
+  
+  const onSubmit = (data) => {
+    
+    const existingMarks = selectedUser?.Marks || {};
+
+    const assignedMarks = {
+      ...existingMarks,
+      [department] : data.marks,
+    }
+
+    const marksArray = Object.values(assignedMarks).filter(mark => mark!=="");
+    const toalMarks = marksArray.reduce((a , b) => Number(a) + Number(b));
+    const avgMarksOfStudent = toalMarks / marksArray.length;
+
+    const updatedUser = {
+      ...selectedUser,
+      Marks: assignedMarks,
+      avgMark : avgMarksOfStudent
+    };
+   
+
+    dispatch(updateUser(updatedUser));
+    
+    reset();
+    closeForm();
+  };
+  
+  
+
+
 
   if (selectedUser) {
     setValue("name", `${selectedUser.FirstName} ${selectedUser.LastName}`);

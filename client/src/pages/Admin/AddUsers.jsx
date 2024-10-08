@@ -34,7 +34,6 @@ const AddUsers = ({ isFormOpen, setIsFormOpen }) => {
       Password: data.userPassword,
       Class : data.studentClass,
       Marks : {physics : "" , maths : "" , chemistry : "" , biology : "" , IT : ""},
-      avgMark : "",
     };
 
     const newMentor = {

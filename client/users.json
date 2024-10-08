@@ -17,6 +17,33 @@
       "Role": "mentor",
       "Password": "123",
       "Department": "biology"
+    },
+    {
+      "id": "9421",
+      "FirstName": "sejal",
+      "LastName": "kumari",
+      "Email": "sejal@mentor.com",
+      "Role": "mentor",
+      "Password": "123",
+      "Department": "maths"
+    },
+    {
+      "id": "54f4",
+      "FirstName": "vivek",
+      "LastName": "rajput",
+      "Email": "vivek@mentor.com",
+      "Role": "mentor",
+      "Password": "123",
+      "Department": "chemistry"
+    },
+    {
+      "id": "f420",
+      "FirstName": "ananya",
+      "LastName": "raj",
+      "Email": "ananya@mentor.com",
+      "Role": "mentor",
+      "Password": "123",
+      "Department": "IT"
     }
   ],
   "students": [
@@ -29,13 +56,98 @@
       "Password": "123",
       "Class": "12",
       "Marks": {
-        "physics": "",
-        "maths": "",
-        "chemistry": "",
-        "biology": "77",
-        "IT": ""
+        "physics": "88",
+        "maths": "84",
+        "chemistry": "88",
+        "biology": "75",
+        "IT": "55"
       },
-      "avgMark": ""
+      "avgMark": 78
+    },
+    {
+      "id": "a411",
+      "FirstName": "bibek",
+      "LastName": "mohanty",
+      "Email": "bibek@student.com",
+      "Role": "student",
+      "Password": "123",
+      "Class": "12",
+      "Marks": {
+        "physics": "85",
+        "maths": "95",
+        "chemistry": "88",
+        "biology": "45",
+        "IT": "98"
+      },
+      "avgMark": 82.2
+    },
+    {
+      "id": "e6c4",
+      "FirstName": "Joy",
+      "LastName": "nath",
+      "Email": "joy@student.com",
+      "Role": "student",
+      "Password": "123",
+      "Class": "11",
+      "Marks": {
+        "physics": "85",
+        "maths": "25",
+        "chemistry": "51",
+        "biology": "96",
+        "IT": "42"
+      },
+      "avgMark": 59.8
+    },
+    {
+      "id": "06e9",
+      "FirstName": "bikash",
+      "LastName": "jena",
+      "Email": "bikashjena@student.com",
+      "Role": "student",
+      "Password": "123",
+      "Class": "11",
+      "Marks": {
+        "physics": "56",
+        "maths": "12",
+        "chemistry": "43",
+        "biology": "100",
+        "IT": "74"
+      },
+      "avgMark": 57
+    },
+    {
+      "id": "3cea",
+      "FirstName": "nirmal",
+      "LastName": "tudu",
+      "Email": "nirmal@student.com",
+      "Role": "student",
+      "Password": "123",
+      "Class": "12",
+      "Marks": {
+        "physics": "60",
+        "maths": "35",
+        "chemistry": "33",
+        "biology": "68",
+        "IT": "84"
+      },
+      "avgMark": 56
+    },
+    {
+      "id": "f7d3",
+      "FirstName": "rakesh",
+      "LastName": "mohanta",
+      "Email": "rakesh@student.com",
+      "Role": "student",
+      "Password": "123",
+      "Class": "12",
+      "Marks": {
+        "physics": "90",
+        "maths": "65",
+        "chemistry": "91",
+        "biology": "75",
+        "IT": "73"
+      },
+      "avgMark": 78.8
     }
   ]
 }
