@@ -22,6 +22,7 @@ import StudentStats from './pages/Student/sub-pages/StudentStats'
 import StudentMessages from './pages/Student/sub-pages/StudentMessages'
 import StudentAssignments from './pages/Student/sub-pages/StudentAssignments'
 import StudentSettings from './pages/Student/sub-pages/StudentSettings'
+import StudentProfile from "./pages/Student/StudentProfile";
 
 
 
@@ -222,11 +223,21 @@ const App = () => {
         <StudentSettings/>
         </>
       )
+    },
+    {
+      path : "/studentDashboard/profile",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <StudentProfile/>
+        </>
+      )
     }
   ]);
 
   return (
-    <React.Fragment >
+    <React.Fragment>
       <RouterProvider router={myRouter}></RouterProvider>
     </React.Fragment>
   );

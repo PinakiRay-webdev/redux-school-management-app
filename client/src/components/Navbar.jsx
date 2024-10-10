@@ -5,9 +5,11 @@ import { FaUser } from "react-icons/fa";
 import { useSelector , useDispatch } from 'react-redux';
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { getUsers } from '../Redux/slice/userSlice';
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
+    const navigate = useNavigate();
     const date = new Date();
     const hours = date.getHours();
 
@@ -32,6 +34,12 @@ const Navbar = () => {
         } else {
             return "Good Evening";
         }
+    }
+
+    const viewProfile = () =>{
+        if(student){
+            navigate('/studentDashboard/profile')
+        }   
     }
 
     return (
@@ -65,7 +73,7 @@ const Navbar = () => {
                                     {admin ? `Admin` : mentor ? `${mentor.department} Mentor` : `Student`}
                                 </p>
                             </div>
-                            <p className='text-2xl'><MdKeyboardArrowRight /></p>
+                            <p onClick={viewProfile} className='text-2xl'><MdKeyboardArrowRight /></p>
                         </div>
                     </div>
                 </div>

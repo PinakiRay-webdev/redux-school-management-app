@@ -79,7 +79,10 @@
         "biology": "45",
         "IT": "98"
       },
-      "avgMark": 82.2
+      "avgMark": 82.2,
+      "Phone": 7847066316,
+      "DOB": "2001-06-15",
+      "Gender": "male"
     },
     {
       "id": "e6c4",
@@ -113,7 +116,10 @@
         "biology": "100",
         "IT": "74"
       },
-      "avgMark": 57
+      "avgMark": 57,
+      "Phone": "7847066316",
+      "DOB": "2024-10-15",
+      "Gender": "male"
     },
     {
       "id": "3cea",
@@ -130,7 +136,10 @@
         "biology": "68",
         "IT": "84"
       },
-      "avgMark": 56
+      "avgMark": 56,
+      "Phone": "78467545",
+      "DOB": "2024-10-09",
+      "Gender": "male"
     },
     {
       "id": "f7d3",
