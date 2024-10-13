@@ -1,6 +1,6 @@
 import React , {useState} from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { IoIosMale , IoIosFemale  } from "react-icons/io";
 import { MdOutlineMail, MdOutlineCake } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
@@ -12,6 +12,8 @@ const StudentProfile = () => {
     state.user.students.find((e) => e.Email === studentEmail.student_mail)
   );
 
+  const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
+
   const [isEditable, setIsEditable] = useState("top-[-100%]")
 
   const openEdit = () =>{
@@ -19,7 +21,7 @@ const StudentProfile = () => {
   }
 
   return (
-    <div className="w-full h-fit pl-32 overflow-y-hidden">
+    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out`}>
       <div className="px-3 py-2">
         <div className="flex justify-end">
           <button onClick={openEdit} className="bg-amber-400 px-6 py-1 rounded-lg font-bold mb-2">

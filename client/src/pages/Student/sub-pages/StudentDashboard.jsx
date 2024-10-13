@@ -9,7 +9,8 @@ const StudentDashboard = () => {
   const currentUser = JSON.parse(localStorage.getItem("studentCredentials"));
 
   const studentInfo = useSelector((state) => state.user.students);
-
+  const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
+  
   const currentStudentInfo = studentInfo?.find(
     (e) => e.Email === currentUser?.student_mail
   );
@@ -36,7 +37,7 @@ const StudentDashboard = () => {
 
 
   return (
-    <div className="pl-32 w-full h-fit">
+    <div className={`w-full h-fit ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out`}>
       <div className="px-3 py-4 ">
         <header className="grid grid-cols-4 gap-4">
           {/* avg marks section  */}
