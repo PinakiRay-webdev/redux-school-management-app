@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import EditUsers from "../EditUsers";
+import EditUsers from "../../EditUsers";
 import { useSelector, useDispatch } from "react-redux";
 import { TbMessageCircleUser, TbUserX } from "react-icons/tb";
 import { PiBooksDuotone } from "react-icons/pi";
 import { FaUserTie, FaUserTag } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { CiMenuKebab } from "react-icons/ci";
-import { getMentors} from "../../../../Redux/slice/userSlice";
+import { getMentors} from "../../../../../Redux/slice/userSlice";
 
 const AdminTeacher = () => {
   const userData = useSelector((state) =>

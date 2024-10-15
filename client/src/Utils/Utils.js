@@ -12,12 +12,13 @@ import { PiStudent, PiChalkboardTeacher } from "react-icons/pi";
 import { GoBook } from "react-icons/go";
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { AiOutlineMessage } from "react-icons/ai";
-import { IoSettingsOutline, IoTicket } from "react-icons/io5";
+import { IoSettingsOutline} from "react-icons/io5";
 import { IoIosCloseCircle } from "react-icons/io";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { BiStats } from "react-icons/bi";
 import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
 import { LuMessagesSquare } from "react-icons/lu";
+import { CiCalendarDate } from "react-icons/ci";
 
 export const closeEyes = closeEyesIcon;
 export const openEyes = openEyesIcon;
@@ -39,6 +40,7 @@ export const classes = FaChalkboardTeacher;
 export const statistics = BiStats;
 export const assignment = MdOutlineAssignmentTurnedIn;
 export const messages = LuMessagesSquare;
+export const calendarIcon = CiCalendarDate
 
 export const sideBarNav = [
   {
@@ -63,8 +65,8 @@ export const sideBarNav = [
   },
   {
     id: 5,
-    item: "earnings",
-    icon: earnings,
+    item: "Calendar",
+    icon: calendarIcon,
   },
   {
     id: 6,
@@ -144,5 +146,10 @@ export const studentSideBarNav = [
     id: 7,
     icon: settings,
     item: "settings",
+  },
+  {
+    id: 8,
+    item: "Calendar",
+    icon: calendarIcon,
   },
 ];

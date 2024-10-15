@@ -4,15 +4,15 @@ import Login from "./Auth/Login";
 import Navbar from "./Pages/Global/Navbar/Navbar";
 import Calender from "./Pages/Global/Calender/Calender";
 import AdminSideBar from './Pages/Accounts/Admin/AdminSideBar'
-import AdminDashboard from './Pages/Accounts/Admin/Components/AdminDashboard'
-import AdminTeacher from './Pages/Accounts/Admin/Components/AdminTeacher'
-import AdminStudent from './Pages/Accounts/Admin/Components/AdminStudent'
-import AdminSubjects from './Pages/Accounts/Admin/Components/AdminSubjects'
-import AdminEarnings from './Pages/Accounts/Admin/Components/AdminEarnings'
+import AdminDashboard from './Pages/Accounts/Admin/Components/Dashboard/AdminDashboard'
+import AdminTeacher from './Pages/Accounts/Admin/Components/Teachers/AdminTeacher'
+import AdminStudent from './Pages/Global/Students/Student'
+import AdminSubjects from './Pages/Accounts/Admin/Components/Subjects/AdminSubjects'
+
 import Chat from "./Pages/chat/Chat";
-import AdminSettings from './Pages/Accounts/Admin/Components/AdminSettings'
+import AdminSettings from './Pages/Accounts/Admin/Components/Settings/AdminSettings'
 import StudentDes from "./Pages/Accounts/Admin/Components/StudentDes";
-import TeacherDes from "./Pages/Accounts/Admin/Components/TeacherDes";
+import TeacherDes from "./Pages/Accounts/Admin/Components/Description/TeacherDes";
 import MentorDashboard from './Pages/Accounts/Mentor/Components/MentorDashboard'
 import MentorSidebar from './Pages/Accounts/Mentor/MentorSidebar'
 import StudentDashboard from './Pages/Accounts/Student/Components/StudentDashboard'
@@ -105,12 +105,12 @@ const App = () => {
       )
     },
     {
-      path: "/adminDashboard/earnings",
+      path: "/adminDashboard/calendar",
       element:(
         <>
         <Navbar/>
         <AdminSideBar/>
-        <AdminEarnings/>
+        <Calender/>
         </>
       )
     },
@@ -209,6 +209,16 @@ const App = () => {
         <Navbar/>
         <StudentSideBar/>
         <StudentAssignments/>
+        </>
+      )
+    },
+    {
+      path : "/studentDashboard/calendar",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <Calender/>
         </>
       )
     },

@@ -7,10 +7,11 @@ import { FaUserGraduate, FaUserTag } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { CiMenuKebab } from "react-icons/ci";
-import { deleteUser, getUsers } from "../../../../Redux/slice/userSlice";
-import EditUsers from "../EditUsers";
-import AssignMarks from "../../Mentor/AssignMarks";
-const AdminStudent = () => {
+import { deleteUser, getUsers } from "../../../Redux/slice/userSlice";
+import EditUsers from "../../Accounts/Admin/EditUsers";
+import AssignMarks from "../../Accounts/Mentor/AssignMarks";
+
+const Student = () => {
   
   const usersData = useSelector((state) =>
     state.user.students.filter((role) => role.Role === "student")
@@ -147,4 +148,4 @@ const AdminStudent = () => {
   );
 };
 
-export default AdminStudent;
+export default Student;
