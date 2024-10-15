@@ -23,7 +23,8 @@ import StudentMessages from './pages/Student/sub-pages/StudentMessages'
 import StudentAssignments from './pages/Student/sub-pages/StudentAssignments'
 import StudentSettings from './pages/Student/sub-pages/StudentSettings'
 import StudentProfile from "./pages/Student/StudentProfile";
-
+import EditProfile from "./pages/Student/EditProfile";
+import UserProfile from "./components/UserProfile";
 
 
 const App = () => {
@@ -230,7 +231,17 @@ const App = () => {
         <>
         <Navbar/>
         <StudentSideBar/>
-        <StudentProfile/>
+        <UserProfile/>
+        </>
+      )
+    },
+    {
+      path : "/studentDashboard/profile/editProfile",
+      element:(
+        <>
+        <Navbar/>
+        <StudentSideBar/>
+        <EditProfile/>
         </>
       )
     }

@@ -1,10 +1,11 @@
-import React , {useState} from "react";
+import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useSelector} from "react-redux";
 import { IoIosMale , IoIosFemale  } from "react-icons/io";
 import { MdOutlineMail, MdOutlineCake } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
-import StudentEdit from "./StudentEdit";
+import { useNavigate } from "react-router-dom";
+
 const StudentProfile = () => {
   const studentEmail = JSON.parse(localStorage.getItem("studentCredentials"));
 
@@ -13,18 +14,17 @@ const StudentProfile = () => {
   );
 
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
+  const navigate = useNavigate();
 
-  const [isEditable, setIsEditable] = useState("top-[-100%]")
-
-  const openEdit = () =>{
-    setIsEditable("top-[0%]")
+  const makeEdit = () =>{
+    navigate('/studentDashboard/profile/editProfile');
   }
 
   return (
     <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out`}>
       <div className="px-3 py-2">
         <div className="flex justify-end">
-          <button onClick={openEdit} className="bg-amber-400 px-6 py-1 rounded-lg font-bold mb-2">
+          <button onClick={makeEdit} className="bg-amber-400 px-6 py-1 rounded-lg font-bold mb-2">
             Edit
           </button>
         </div>
@@ -90,8 +90,6 @@ const StudentProfile = () => {
           </div>
         </div>
       </div>
-
-      <StudentEdit isEditable = {isEditable} setIsEditable = {setIsEditable} currentStudent = {currentStudent} /> 
     </div>
   );
 };

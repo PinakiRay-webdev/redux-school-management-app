@@ -16,7 +16,6 @@ const StudentSideBar = () => {
 
     const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
     const dispatch = useDispatch();
-    console.log(sideBarStatus);
     
 
 

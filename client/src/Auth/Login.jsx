@@ -1,91 +1,120 @@
-import React , {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import {useSelector , useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import { loginImg, google, facebook, github } from "../constants/constants";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getUsers } from "../Redux/slice/userSlice";
 const Login = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.user)
+  const userData = useSelector((state) => state.user);
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getUsers());
-  },[dispatch])
-
+  }, [dispatch]);
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors , isSubmitting },
-  } = useForm()
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const delay = (d)=>{
-    return new Promise((resolve) =>{
+  const delay = () => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-      }, d * 1000);
-    })
-  }
-
-
-    
+      }, 1000);
+    });
+  };
 
   const onSubmit = async (data) => {
-    await delay(2)
+    const validUser =
+      userData.students.find(
+        (user) =>
+          user.Email === data.userEmail && user.Password === data.userPassword
+      ) ||
+      userData.mentors.find(
+        (user) =>
+          user.Email === data.userEmail && user.Password === data.userPassword
+      );
+    //admin login
+    if (
+      data.userEmail.trim() === import.meta.env.VITE_ADMINEMAIL.trim() &&
+      data.userPassword.trim() === import.meta.env.VITE_ADMINPASSWORD.trim()
+    ) {
+      toast.promise(
+        delay,
+        {
+          pending: "Logging...",
+          success: "Logged in successfully",
+          error: "Unable to login",
+        },
+        { theme: "dark" }
+      );
 
-    let currentUser = 'students' || 'mentors'
-
-    const validUser = userData.students.find(user => user.Email === data.userEmail && user.Password === data.userPassword) || userData.mentors.find(user => user.Email === data.userEmail && user.Password === data.userPassword)
-    //admin login 
-    if(data.userEmail.trim() === import.meta.env.VITE_ADMINEMAIL.trim() && data.userPassword.trim() === import.meta.env.VITE_ADMINPASSWORD.trim()){
-      toast.success("Logged in successfully" , {theme: "dark"})
       setTimeout(() => {
-        navigate('/adminDashboard/dashboard')
+        navigate("/adminDashboard/dashboard");
       }, 2000);
-      localStorage.setItem('adminCredentials' , JSON.stringify({
-        admin_mail : data.userEmail
-      }))
+      localStorage.setItem(
+        "adminCredentials",
+        JSON.stringify({
+          admin_mail: data.userEmail,
+        })
+      );
 
-      // other users login 
-    } else if(validUser) {
-      const role = validUser.Role
+      // other users login
+    } else if (validUser) {
+      const role = validUser.Role;
 
-        // mentor login 
+      // mentor login
 
-        if(role === 'mentor'){
-          toast.success('Mentor logged in successfully' , {theme: "dark"})
-          setTimeout(() => {
-            navigate('/mentorDashboard/dashboard');
-          }, 2000);
-          localStorage.setItem('mentorCredentials' , JSON.stringify({
-            mentor_mail : data.userEmail,
-            role : role,
-            department : validUser.Department
-          }))
-        }
-        
-        // student login 
-        else {
-          setTimeout(() => {
-            navigate('/studentDashboard/dashboard');
-          }, 2000);
+      if (role === "mentor") {
+        toast.success("Mentor logged in successfully", { theme: "dark" });
+        setTimeout(() => {
+          navigate("/mentorDashboard/dashboard");
+        }, 2000);
+        localStorage.setItem(
+          "mentorCredentials",
+          JSON.stringify({
+            mentor_mail: data.userEmail,
+            role: role,
+            department: validUser.Department,
+          })
+        );
+      }
 
-          toast.success('Student logged in successfully' , {theme: 'dark'})
-          localStorage.setItem('studentCredentials' , JSON.stringify({
-            student_mail : data.userEmail,
-            role : role
-          }))
-        }
-    }  else {
-      toast.error("Invalid credentials" , {theme: "dark"})
+      // student login
+      else {
+        toast.promise(
+          delay,
+          {
+            pending: "Logging...",
+            success: "Logged in successfully",
+            error: "Unable to login",
+          },
+          { theme: "dark" }
+        );
+    
+        setTimeout(() => {
+          navigate("/studentDashboard/dashboard");
+        }, 2000);
+
+        localStorage.setItem(
+          "studentCredentials",
+          JSON.stringify({
+            student_mail: data.userEmail,
+            role: role,
+          })
+        );
+      }
+    } else {
+      toast.error("Invalid credentials", { theme: "dark" });
     }
     reset();
-  }
+  };
   return (
     <div className="w-full h-screen flex items-center px-10">
       {/* login section  */}
@@ -122,34 +151,57 @@ const Login = () => {
           </div>
 
           {/* or section  */}
-          <div className="flex items-center gap-2 my-8" >
-            <div className="border border-zinc-400 w-full" ></div>
+          <div className="flex items-center gap-2 my-8">
+            <div className="border border-zinc-400 w-full"></div>
             <p>or</p>
-            <div className="border border-zinc-400 w-full" ></div>
+            <div className="border border-zinc-400 w-full"></div>
           </div>
 
-          <form className="" onSubmit={handleSubmit(onSubmit)} >
-            <label className="font-semibold text-[#3a5a40]" >Email ID:</label>
+          <form className="" onSubmit={handleSubmit(onSubmit)}>
+            <label className="font-semibold text-[#3a5a40]">Email ID:</label>
             <br />
-            <input {...register("userEmail" , {
-              required:{
-                value: true,
-                message: "This feild is required"
-              }
-            })} className="ring-1 ring-[#a3b18a] w-full px-4 py-2 rounded-lg outline-none mt-2 mb-4" type="text" placeholder="example@xyz.com"/>
+            <input
+              {...register("userEmail", {
+                required: {
+                  value: true,
+                  message: "This feild is required",
+                },
+              })}
+              className="ring-1 ring-[#a3b18a] w-full px-4 py-2 rounded-lg outline-none mt-2 mb-4"
+              type="text"
+              placeholder="example@xyz.com"
+            />
             <br />
-            {errors.userEmail && <p className="text-xs text-red-500" >{errors.userEmail.message}</p>}
-            <label className="font-semibold text-[#3a5a40]" >Password:</label>
+            {errors.userEmail && (
+              <p className="text-xs text-red-500">{errors.userEmail.message}</p>
+            )}
+            <label className="font-semibold text-[#3a5a40]">Password:</label>
             <br />
-            <input {...register("userPassword" , {
-              required:{
-                value:true,
-                message:"This feild is required"
-              }
-            })} className="ring-1 ring-[#a3b18a] w-full px-4 py-2 rounded-lg outline-none mt-2 mb-4" type="password" placeholder="example@xyz.com"/>
+            <input
+              {...register("userPassword", {
+                required: {
+                  value: true,
+                  message: "This feild is required",
+                },
+              })}
+              className="ring-1 ring-[#a3b18a] w-full px-4 py-2 rounded-lg outline-none mt-2 mb-4"
+              type="password"
+              placeholder="example@xyz.com"
+            />
             <br />
-            {errors.userPassword && <p className="text-xs text-red-500" >{errors.userPassword.message}</p>}
-            <button disabled={isSubmitting} className={`${isSubmitting && "disabled:opacity-40 cursor-not-allowed"} text-white bg-black w-full py-2 rounded-lg mt-4`}>{isSubmitting ? "Logging" : "Log In"}</button>
+            {errors.userPassword && (
+              <p className="text-xs text-red-500">
+                {errors.userPassword.message}
+              </p>
+            )}
+            <button
+              disabled={isSubmitting}
+              className={`${
+                isSubmitting && "disabled:opacity-40 cursor-not-allowed"
+              } text-white bg-black w-full py-2 rounded-lg mt-4`}
+            >
+              {isSubmitting ? "Logging" : "Log In"}
+            </button>
           </form>
         </div>
       </div>
@@ -158,7 +210,7 @@ const Login = () => {
       <div className="w-[50vw] h-screen">
         <img className="w-full h-full object-contain" src={loginImg} alt="" />
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

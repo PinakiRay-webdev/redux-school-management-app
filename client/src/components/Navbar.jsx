@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import { PiHandWavingFill } from "react-icons/pi";
 import { MdOutlineLightMode , MdModeNight } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
@@ -6,8 +6,18 @@ import { useSelector , useDispatch } from 'react-redux';
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { getUsers } from '../Redux/slice/userSlice';
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
+import { dashboard } from '../constants/constants';
 
 const Navbar = () => {
+
+    const location = useLocation();
+
+    let [currentPage, setCurrentPage] = useState(null)
+
+
+    
+    
 
     const navigate = useNavigate();
     const date = new Date();
@@ -19,6 +29,11 @@ const Navbar = () => {
     useEffect(() => {
         dispatch(getUsers());
     }, [dispatch]);
+
+    useEffect(()=>{
+        let temp = location.pathname.slice(location.pathname.lastIndexOf("/")+1)
+        setCurrentPage(temp)
+    },[location])
 
     const mentor = JSON.parse(localStorage.getItem('mentorCredentials'));
     const admin = JSON.parse(localStorage.getItem('adminCredentials'));
@@ -52,9 +67,8 @@ const Navbar = () => {
                             {loggedInUser ? loggedInUser.FirstName : "Sankar"}
                         </span>
                     </h1>
-                    <div className='flex items-center gap-3'>
-                        <p className='text-xl font-semibold inline'>Welcome back</p>
-                        <p className='text-2xl text-amber-500'><PiHandWavingFill /></p>
+                    <div>
+                        <p className='text-xl font-semibold inline capitalize '>{currentPage}</p>
                     </div>
                 </div>
 

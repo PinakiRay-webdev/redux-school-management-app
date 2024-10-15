@@ -62,7 +62,13 @@
         "biology": "75",
         "IT": "55"
       },
-      "avgMark": 78
+      "avgMark": 78,
+      "Phone": "64738847573",
+      "Gender": "male",
+      "DOB": "2024-10-15",
+      "State": "Karnataka",
+      "City": "Bengaluru",
+      "Landmark": "marthaghalli"
     },
     {
       "id": "a411",
@@ -80,9 +86,13 @@
         "IT": "98"
       },
       "avgMark": 82.2,
-      "Phone": 7847066316,
-      "DOB": "2001-06-15",
-      "Gender": "male"
+      "Phone": "7847066316",
+      "Gender": "male",
+      "DOB": "2024-10-15",
+      "Country": "India",
+      "City": "Hyderabad",
+      "Landmark": "Green homes elite",
+      "State": "Telanga"
     },
     {
       "id": "e6c4",
@@ -139,7 +149,11 @@
       "avgMark": 56,
       "Phone": "78467545",
       "DOB": "2024-10-09",
-      "Gender": "male"
+      "Gender": "male",
+      "Country": "India",
+      "City": "Bhubaneswar",
+      "Landmark": "Saheed Nagar",
+      "State": "Odisha"
     },
     {
       "id": "f7d3",
@@ -156,7 +170,13 @@
         "biology": "75",
         "IT": "73"
       },
-      "avgMark": 78.8
+      "avgMark": 78.8,
+      "Phone": "57484",
+      "Gender": "male",
+      "DOB": "2024-10-18",
+      "State": "Odisha",
+      "City": "Cuttack",
+      "Landmark": "link road"
     }
   ]
 }
