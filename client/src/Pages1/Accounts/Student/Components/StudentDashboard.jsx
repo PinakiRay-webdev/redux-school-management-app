@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../../Redux/slice/userSlice";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { getUsers } from "../../../../Redux/slice/userSlice";
 import "react-circular-progressbar/dist/styles.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { BarChart } from "@mui/x-charts/BarChart";

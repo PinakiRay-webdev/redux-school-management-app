@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { IoIosCloseCircle } from "react-icons/io";
-import { updateUser } from "../../Redux/slice/userSlice";
+import { updateUser } from "../../../Redux/slice/userSlice";
 const AssignMarks = ({ isMarksActivate, setIsMarksActivate, userID }) => {
   const {
     register,

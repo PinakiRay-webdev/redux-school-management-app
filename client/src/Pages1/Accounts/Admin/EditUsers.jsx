@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { getMentors, updateUser } from "../../Redux/slice/userSlice";
+import { getMentors, updateUser } from "../../../Redux/slice/userSlice";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import { IoIosCloseCircle } from "react-icons/io";
-import { getUsers } from "../../Redux/slice/userSlice";
+import { getUsers } from "../../../Redux/slice/userSlice";
 
 const EditUsers = ({ isEditActivate, setIsEditActivate, userID }) => {
   const closeForm = () => {

@@ -6,7 +6,7 @@ const TeacherDes = () => {
     const params = useParams();
     const teacherID = params.id;
 
-    const teachersData = useSelector((state) => state.user.users.find((e) => e.id === teacherID))
+    const teachersData = useSelector((state) => state.user.mentors.find((e) => e.id === teacherID))
 
   return (
     <div className='w-full h-fit pl-32' >

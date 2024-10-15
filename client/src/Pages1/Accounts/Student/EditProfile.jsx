@@ -12,7 +12,7 @@ import {
   FormControlLabel,
   Radio,
 } from "@mui/material";
-import { updateUser } from "../../Redux/slice/userSlice";
+import { updateUser } from "../../../Redux/slice/userSlice";
 
 const EditProfile = () => {
   const {

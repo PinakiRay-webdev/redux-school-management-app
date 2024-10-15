@@ -1,5 +1,5 @@
 import React from 'react'
-import { sideBarNav } from '../../constants/constants'
+import { sideBarNav } from '../../../constants/constants'
 import { useNavigate } from 'react-router-dom';
 import { IoLogOutOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';

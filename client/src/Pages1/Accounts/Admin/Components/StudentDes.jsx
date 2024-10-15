@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useSelector , useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { getUsers } from '../../../Redux/slice/userSlice';
+import { getUsers } from '../../../../Redux/slice/userSlice';
 const StudentDes = () => {
 
     const params = useParams();
     const studentID = params.id;
 
-    const studentData = useSelector((state) => state.user.users.find((e) => e.id === studentID))
+    const studentData = useSelector((state) => state.user.students.find((e) => e.id === studentID))
     const dispatch = useDispatch();
 
     useEffect(()=>{
