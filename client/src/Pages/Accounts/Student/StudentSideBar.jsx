@@ -2,7 +2,7 @@ import React , {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
-import { studentSideBarNav } from '../../../constants/constants';
+import { studentSideBarNav } from '../../../Utils/Utils';
 import { TbLayoutSidebarLeftCollapse , TbLayoutSidebarLeftExpand  } from "react-icons/tb";
 import { openSlice } from '../../../Redux/slice/collapseSlice';
 const StudentSideBar = () => {

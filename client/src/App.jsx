@@ -24,7 +24,7 @@ import StudentAssignments from './Pages/Accounts/Student/Components/StudentAssig
 import StudentSettings from './Pages/Accounts/Student/Components/StudentSettings'
 
 import EditProfile from './Pages/Accounts/Student/EditProfile'
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./Pages/Global/Profile/UserProfile";
 import StudentSideBar from "./Pages/Accounts/Student/StudentSideBar";
 
 

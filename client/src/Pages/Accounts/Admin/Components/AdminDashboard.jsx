@@ -2,7 +2,7 @@ import React, { useEffect , useState} from "react";
 import {PiUserPlus } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
 import { getMentors, getUsers } from "../../../../Redux/slice/userSlice";
-import { Admin_Dashboard_Stats } from "../../../../constants/constants";
+import { Admin_Dashboard_Stats } from "../../../../Utils/Utils";
 import AddUsers from '../AddUsers'
 
 
