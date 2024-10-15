@@ -1,31 +1,31 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Auth/Login";
-import Navbar from "./Pages1/Global/Navbar/Navbar";
-import Calender from "./Pages1/Global/Calender/Calender";
-import AdminSideBar from './Pages1/Accounts/Admin/AdminSideBar'
-import AdminDashboard from './Pages1/Accounts/Admin/Components/AdminDashboard'
-import AdminTeacher from './Pages1/Accounts/Admin/Components/AdminTeacher'
-import AdminStudent from './Pages1/Accounts/Admin/Components/AdminStudent'
-import AdminSubjects from './Pages1/Accounts/Admin/Components/AdminSubjects'
-import AdminEarnings from './Pages1/Accounts/Admin/Components/AdminEarnings'
-import Chat from "./Pages1/chat/Chat";
-import AdminSettings from './Pages1/Accounts/Admin/Components/AdminSettings'
-import StudentDes from "./pages1/Accounts/Admin/Components/StudentDes";
-import TeacherDes from "./pages1/Accounts/Admin/Components/TeacherDes";
-import MentorDashboard from './Pages1/Accounts/Mentor/Components/MentorDashboard'
-import MentorSidebar from './Pages1/Accounts/Mentor/MentorSidebar'
-import StudentDashboard from './Pages1/Accounts/Student/Components/StudentDashboard'
-import StudentSubjects from './Pages1/Accounts/Student/Components/StudentSubjects'
-import StudentClasses from './Pages1/Accounts/Student/Components/StudentClasses'
-import StudentStats from './Pages1/Accounts/Student/Components/StudentStats'
-import StudentMessages from './Pages1/Accounts/Student/Components/StudentMessages'
-import StudentAssignments from './Pages1/Accounts/Student/Components/StudentAssignments'
-import StudentSettings from './Pages1/Accounts/Student/Components/StudentSettings'
+import Navbar from "./Pages/Global/Navbar/Navbar";
+import Calender from "./Pages/Global/Calender/Calender";
+import AdminSideBar from './Pages/Accounts/Admin/AdminSideBar'
+import AdminDashboard from './Pages/Accounts/Admin/Components/AdminDashboard'
+import AdminTeacher from './Pages/Accounts/Admin/Components/AdminTeacher'
+import AdminStudent from './Pages/Accounts/Admin/Components/AdminStudent'
+import AdminSubjects from './Pages/Accounts/Admin/Components/AdminSubjects'
+import AdminEarnings from './Pages/Accounts/Admin/Components/AdminEarnings'
+import Chat from "./Pages/chat/Chat";
+import AdminSettings from './Pages/Accounts/Admin/Components/AdminSettings'
+import StudentDes from "./Pages/Accounts/Admin/Components/StudentDes";
+import TeacherDes from "./Pages/Accounts/Admin/Components/TeacherDes";
+import MentorDashboard from './Pages/Accounts/Mentor/Components/MentorDashboard'
+import MentorSidebar from './Pages/Accounts/Mentor/MentorSidebar'
+import StudentDashboard from './Pages/Accounts/Student/Components/StudentDashboard'
+import StudentSubjects from './Pages/Accounts/Student/Components/StudentSubjects'
+import StudentClasses from './Pages/Accounts/Student/Components/StudentClasses'
+import StudentStats from './Pages/Accounts/Student/Components/StudentStats'
+import StudentMessages from './Pages/Accounts/Student/Components/StudentMessages'
+import StudentAssignments from './Pages/Accounts/Student/Components/StudentAssignments'
+import StudentSettings from './Pages/Accounts/Student/Components/StudentSettings'
 
-import EditProfile from './Pages1/Accounts/Student/EditProfile'
+import EditProfile from './Pages/Accounts/Student/EditProfile'
 import UserProfile from "./components/UserProfile";
-import StudentSideBar from "./Pages1/Accounts/Student/StudentSideBar";
+import StudentSideBar from "./Pages/Accounts/Student/StudentSideBar";
 
 
 const App = () => {
