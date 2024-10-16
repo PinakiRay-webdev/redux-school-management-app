@@ -62,6 +62,7 @@ const Login = () => {
         "adminCredentials",
         JSON.stringify({
           admin_mail: data.userEmail,
+          role : 'admin'
         })
       );
 
