@@ -16,6 +16,7 @@ const AdminDashboard = () => {
   const userData = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  const sideBarStatus = useSelector((state) => state.sidebar.isOpen)
 
 
   const students = userData.students
@@ -41,7 +42,7 @@ const AdminDashboard = () => {
 
 
   return (
-    <div className="w-full h-fit pl-32">
+    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out`}>
       <div className="px-3 py-5">
         {/* stats section  */}
         <div className="grid grid-cols-4 gap-3">

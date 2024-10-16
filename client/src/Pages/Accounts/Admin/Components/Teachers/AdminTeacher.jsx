@@ -13,6 +13,9 @@ const AdminTeacher = () => {
   const userData = useSelector((state) =>
     state.user.mentors.filter((role) => role.Role === "mentor")
   );
+
+  const sideBarStatus = useSelector((state) => state.sidebar.isOpen)
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMentors());
@@ -27,7 +30,7 @@ const AdminTeacher = () => {
   };
 
   return (
-    <div className="w-full h-fit pl-32">
+    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out`}>
       <div className="px-3 py-5">
         <div className="grid grid-cols-4 gap-3">
           {userData.map((Element, id) => (
