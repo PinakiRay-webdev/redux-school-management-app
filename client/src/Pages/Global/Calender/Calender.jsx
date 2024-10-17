@@ -1,14 +1,10 @@
 import { Scheduler } from "@aldabil/react-scheduler";
 import React, { useEffect, useState } from "react";
 import { useSelector , useDispatch } from "react-redux";
-import AddEvent from "./AddEvent";
+
 import { getEvents } from "../../../Redux/slice/EventSlice";
 
 const Calender = () => {
-  
-
-
-
 
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
   const eventData = useSelector((state) => state.events.eventList);
@@ -17,6 +13,9 @@ const Calender = () => {
   useEffect(()=>{
     dispatch(getEvents())
   },[dispatch])
+
+
+
 
   return (
     <div
@@ -33,7 +32,6 @@ const Calender = () => {
         />
       </div>
 
-      {/* <AddEvent/> */}
     </div>
   );
 };

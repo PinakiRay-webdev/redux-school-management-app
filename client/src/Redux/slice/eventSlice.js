@@ -1,17 +1,34 @@
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const base_url = 'http://localhost:3001/events'
+
 export const getEvents = createAsyncThunk("getEvents" , async()=>{
-    const eventData = await axios.get('http://localhost:3001/events');
-    const response = eventData.data.map((event) => (
+    const eventData = await axios.get(base_url);
+    const response = eventData.data.map((Element) => (
         {
-            ...event,
-            start : new Date(event.start),
-            end : new Date(event.end)
+            ...Element,
+            start : new Date(Element.start),
+            end : new Date(Element.end)
         }
     ))
     return response;
 }) 
+
+export const createEvent = createAsyncThunk("createEvent" , async(newEvent) => {
+    try {
+        const response = await axios.post(base_url , newEvent , {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+
+        return response.data
+    } catch (error) {
+        console.log({error : error.message});
+        
+    }
+})
 
 const initialState = {
     eventList : [],
@@ -37,6 +54,23 @@ export const eventSlice = createSlice({
                 state.isloading = false,
                 state.iserror = true
                 console.log("Error : " + action.error.message);
+                
+            })
+
+        builder
+            .addCase(createEvent.pending , (state) => {
+                state.isloading = true,
+                state.iserror = false
+            })
+            .addCase(createEvent.fulfilled , (state , action) => {
+                state.isloading = false,
+                state.eventList = state.eventList.push(action.payload)
+                state.iserror = false
+            })
+            .addCase(createEvent.rejected , (state , action) => {
+                state.isloading = false,
+                state.iserror = true,
+                console.log("Error: " + action.error.message);
                 
             })
     }

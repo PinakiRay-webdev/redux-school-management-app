@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMentors, getUsers } from "../../../../../Redux/slice/userSlice";
 import { Admin_Dashboard_Stats } from "../../../../../Utils/Utils";
 import AddUsers from '../../AddUsers'
+import MiniCalender from "./MiniCalender";
 
 
 const AdminDashboard = () => {
@@ -17,7 +18,6 @@ const AdminDashboard = () => {
   const dispatch = useDispatch();
 
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen)
-
 
   const students = userData.students
   const mentors = userData.mentors
@@ -71,6 +71,9 @@ const AdminDashboard = () => {
             <p className="text-7xl text-[#ff5400]" ><PiUserPlus/></p>
           </div>
         </div>
+
+          <MiniCalender/>
+          
       </div>
         
         <AddUsers isFormOpen={isFormOpen} setIsFormOpen={setIsFormOpen} />
