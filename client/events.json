@@ -1,18 +1,11 @@
 {
   "events": [
     {
-      "id": 1,
-      "title": "Coffee with Anuj",
+      "id": "40c4",
+      "title": "jamming",
       "start": "2024-10-18T09:00",
-      "end": "2024-10-18T08:30",
-      "subtitle": "Short coffee break"
-    },
-    {
-      "id": "1239",
-      "title": "java",
-      "start": "2024-10-21T10:00",
-      "end": "2024-10-21T00:00",
-      "subtitle": "bootcamp by shradha"
+      "end": "2024-10-18T13:00",
+      "subtitle": "jamming session with roy"
     }
   ]
 }

@@ -17,14 +17,14 @@ const MiniCalender = () => {
 
   useEffect(() => {
     dispatch(getEvents());
-  }, [dispatch]);
+  }, [dispatch , eventData]);
 
   const handleAddEvent = () => {
     setEventForm("scale-100");
   };
 
   return (
-    <div className="shadow-lg w-fit rounded-lg mt-3 border border-zinc-300 h-[68vh]">
+    <div className="shadow-lg w-fit rounded-lg border border-zinc-300 h-[68vh]">
       <div className="bg-[#f1faee]">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DateCalendar", "DateCalendar"]}>
