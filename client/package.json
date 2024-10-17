@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev" : "concurrently \"npm run start\" \"json-server --watch users.json\""
   },
   "dependencies": {
     "@aldabil/react-scheduler": "^2.9.5",
@@ -20,6 +21,7 @@
     "@schedule-x/react": "^2.4.1",
     "@schedule-x/theme-default": "^2.4.1",
     "axios": "^1.7.7",
+    "concurrently": "^9.0.1",
     "dotenv": "^16.4.5",
     "json-server": "^1.0.0-beta.3",
     "react": "^18.3.1",

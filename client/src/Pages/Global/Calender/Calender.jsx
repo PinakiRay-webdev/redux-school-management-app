@@ -46,6 +46,7 @@ const Calender = () => {
           view="week"
           events={events} // The state containing all events
           hourFormat="24"
+          editable={false}
         />
       </div>
     </div>
