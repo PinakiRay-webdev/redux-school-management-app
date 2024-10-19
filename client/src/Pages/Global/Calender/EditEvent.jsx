@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { createEvent } from "../../../Redux/slice/EventSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents, updateEvent } from "../../../Redux/slice/EventSlice";
 
 
-const AddEvent = ({ eventForm, setEventForm }) => {
+const EditEvent = ({ editEvent, setEditEvent , currentEvent }) => {
   const closeForm = () => {
-    setEventForm("scale-0");
+    setEditEvent("scale-0");
   };
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
+    setValue
   } = useForm();
 
+  const selectedEvent = useSelector((state) => state.events.eventList.find((e) => e.id === currentEvent))
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getEvents());
+    if(selectedEvent){
+        setValue("title" , selectedEvent.title)
+        setValue("subtitle" , selectedEvent.subtitle)
+        setValue('startDate' , selectedEvent.start)
+    }
+  },[dispatch , selectedEvent])
+
 
   const onSubmit = (data) => {
     
@@ -27,7 +39,7 @@ const AddEvent = ({ eventForm, setEventForm }) => {
       subtitle : data.subtitle
     }
 
-    dispatch(createEvent(newEvent))
+    dispatch(updateEvent(newEvent))
 
     reset();
     closeForm();
@@ -36,9 +48,9 @@ const AddEvent = ({ eventForm, setEventForm }) => {
 
   return (
     <div
-      className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] w-[40vw] h-fit py-3 bg-blue-200 z-40 ${eventForm} transition-all duration-150 ease-in-out`}
+      className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-40%] w-[40vw] h-fit py-3 bg-blue-200 z-40 ${editEvent} transition-all duration-150 ease-in-out`}
     >
-      <h1 className="mx-5 font-semibold text-xl pb-3">Add Event</h1>
+      <h1 className="mx-5 font-semibold text-xl pb-3">Edit Event</h1>
       <form className="mx-5" onSubmit={handleSubmit(onSubmit)}>
         <input
           className="w-full py-4 rounded-md outline-none ring-1 ring-zinc-500 px-3 text-sm my-2"
@@ -91,7 +103,7 @@ const AddEvent = ({ eventForm, setEventForm }) => {
         </div>
         <div className="flex  gap-3 mt-8">
           <button className="bg-black text-white w-full py-4 rounded-lg">
-            Add
+            Apply changes
           </button>
           <p
             onClick={closeForm}
@@ -105,4 +117,4 @@ const AddEvent = ({ eventForm, setEventForm }) => {
   );
 };
 
-export default AddEvent;
+export default EditEvent;
