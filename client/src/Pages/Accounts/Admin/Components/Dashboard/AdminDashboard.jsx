@@ -42,14 +42,14 @@ const AdminDashboard = () => {
 
 
   return (
-    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out pr-12`}>
+    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out pr-12 bg-[#f5f3f4] h-[90vh]`}>
       <div className="px-3 py-5">
         {/* stats section  */}
         <div className="grid grid-cols-5 grid-rows-4 gap-2">
           {Admin_Dashboard_Stats.map((Element, id) => (
             <div
               key={id}
-              className="bg-[#9ef01a] flex items-start gap-3 rounded-lg"
+              className="bg-lime-300 flex items-center gap-3 rounded-lg"
             >
               <p className="text-8xl text-[#007200]">
                 {<Element.icon/>}
@@ -67,7 +67,7 @@ const AdminDashboard = () => {
           ))}
 
           {/* adding of a new user section  */}
-          <div onClick={handleForm} className="bg-[#ffea00] flex flex-col items-center justify-center rounded-lg cursor-pointer" >
+          <div onClick={handleForm} className="bg-amber-300 flex flex-col items-center justify-center rounded-lg cursor-pointer" >
             <p className="text-7xl text-[#ff5400]" ><PiUserPlus/></p>
           </div>
 

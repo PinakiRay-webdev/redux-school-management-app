@@ -1,13 +1,11 @@
 import React, { useEffect , useState } from 'react';
-import { PiHandWavingFill } from "react-icons/pi";
 import { MdOutlineLightMode , MdModeNight } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
-import { useSelector , useDispatch } from 'react-redux';
+import { useSelector ,  useDispatch } from 'react-redux';
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { getUsers } from '../../../Redux/slice/userSlice';
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
-import { dashboard } from '../../../Utils/Utils';
 
 const Navbar = () => {
 
@@ -16,14 +14,8 @@ const Navbar = () => {
     let [currentPage, setCurrentPage] = useState(null)
 
 
-    
-    
-
     const navigate = useNavigate();
-    const date = new Date();
-    const hours = date.getHours();
-
-    const userData = useSelector((state) => state.user);
+    const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -39,17 +31,6 @@ const Navbar = () => {
     const admin = JSON.parse(localStorage.getItem('adminCredentials'));
     const student = JSON.parse(localStorage.getItem('studentCredentials'));
 
-    const loggedInUser = userData.students.find(u => u.Email === (admin ? admin.admin_mail : mentor ? mentor.mentor_mail : student.student_mail));
-
-    const greet = () => {
-        if(hours >= 5 && hours < 12) {
-            return "Good Morning";
-        } else if(hours >= 12 && hours < 18) {
-            return "Good Afternoon";
-        } else {
-            return "Good Evening";
-        }
-    }
 
     const viewProfile = () =>{
         if(student){
@@ -58,18 +39,12 @@ const Navbar = () => {
     }
 
     return (
-        <div className='pl-32 w-full h-fit border-b'>
+        <div className={`${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} w-full h-[10vh] border-b shadow drop-shadow-2xl`}>
             <div className='py-2 flex items-end justify-between px-3'>
                 <div>
-                    <h1 className='text-3xl font-semibold'>
-                        {`${greet()},`} 
-                        <span className='text-[#3a5a40] font-bold'>
-                            {loggedInUser ? loggedInUser.FirstName : "Sankar"}
-                        </span>
+                    <h1 className='text-3xl font-semibold capitalize'> 
+                        {currentPage}
                     </h1>
-                    <div>
-                        <p className='text-xl font-semibold inline capitalize '>{currentPage}</p>
-                    </div>
                 </div>
 
                 <div>

@@ -2,10 +2,11 @@ import React from 'react'
 import { sideBarNav } from '../../../Utils/Utils'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { IoLogOutOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { FaChevronRight , FaChevronLeft } from "react-icons/fa";
 import { openSlice } from '../../../Redux/slice/collapseSlice';
+import { CiLogout } from "react-icons/ci";
+
 
 const AdminSideBar = () => {
 
@@ -23,7 +24,7 @@ const AdminSideBar = () => {
     localStorage.clear();
   }
   return (
-    <div className={`h-screen ${sideBarStatus ? "w-[12vw]" : "w-[5vw]"} bg-[#a3b18a] fixed top-0 transition-all duration-150 ease-in-out`} >
+    <div className={`h-screen ${sideBarStatus ? "w-[12vw]" : "w-[5vw]"} bg-[#ffffff] border border-zinc-300 fixed top-0 transition-all duration-150 ease-in-out`} >
       <p onClick={handleSideBar} className='bg-green-200 w-fit p-1 rounded-2xl absolute right-[-1rem] top-10 cursor-pointer' >{sideBarStatus ? <FaChevronLeft/> : <FaChevronRight/>}</p>
       <div className='absolute w-full top-[50%] translate-y-[-50%]' >
         {sideBarNav.map((Element , id)=>(
@@ -36,8 +37,8 @@ const AdminSideBar = () => {
         ))}
       </div>
       
-      <div onClick={logout} className='flex justify-center absolute bottom-0 items-center gap-2 w-full cursor-pointer bg-[#344e41] py-4' >
-      <p className='text-[#a3b18a] font-bold' >Logout</p>
+      <div onClick={logout} className='flex justify-center absolute bottom-0 items-center gap-2 w-full cursor-pointer py-4' >
+      <p className='text-black text-2xl' ><CiLogout/></p>
       </div>
     </div>
   )
