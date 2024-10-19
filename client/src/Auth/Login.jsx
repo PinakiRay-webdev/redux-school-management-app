@@ -5,7 +5,7 @@ import { loginImg, google, facebook, github } from "../Utils/Utils";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getUsers } from "../Redux/slice/userSlice";
+import { getMentors, getUsers } from "../Redux/slice/userSlice";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ const Login = () => {
 
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getMentors())
   }, [dispatch]);
 
   const {
@@ -32,11 +33,11 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     const validUser =
-      userData.students.find(
+      userData.mentors.find(
         (user) =>
           user.Email === data.userEmail && user.Password === data.userPassword
       ) ||
-      userData.mentors.find(
+      userData.students.find(
         (user) =>
           user.Email === data.userEmail && user.Password === data.userPassword
       );
@@ -73,7 +74,15 @@ const Login = () => {
       // mentor login
 
       if (role === "mentor") {
-        toast.success("Mentor logged in successfully", { theme: "dark" });
+        toast.promise(
+          delay,
+          {
+            pending: "Logging...",
+            success: "Logged in successfully",
+            error: "Unable to login",
+          },
+          { theme: "dark" }
+        );
         setTimeout(() => {
           navigate("/mentorDashboard/dashboard");
         }, 2000);
