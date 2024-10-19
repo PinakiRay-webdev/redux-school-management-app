@@ -22,12 +22,15 @@ const EditEvent = ({ editEvent, setEditEvent , currentEvent }) => {
 
   useEffect(() => {
     dispatch(getEvents());
+  },[dispatch])
+
+  useEffect(() => {
     if(selectedEvent){
-        setValue("title" , selectedEvent.title)
-        setValue("subtitle" , selectedEvent.subtitle)
-        setValue('startDate' , selectedEvent.start)
-    }
-  },[dispatch , selectedEvent])
+      setValue("title" , selectedEvent.title)
+      setValue("subtitle" , selectedEvent.subtitle)
+      setValue('startDate' , selectedEvent.start)
+  }
+  },[selectedEvent])
 
 
   const onSubmit = (data) => {

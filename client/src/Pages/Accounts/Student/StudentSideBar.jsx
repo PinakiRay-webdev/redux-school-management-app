@@ -1,10 +1,13 @@
-import React , {useState} from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { studentSideBarNav } from '../../../Utils/Utils';
 import { TbLayoutSidebarLeftCollapse , TbLayoutSidebarLeftExpand  } from "react-icons/tb";
+import { FaAngleRight , FaAngleLeft } from "react-icons/fa6";
 import { openSlice } from '../../../Redux/slice/collapseSlice';
+import { CiLogout } from "react-icons/ci";
+
 const StudentSideBar = () => {
 
     const navigate = useNavigate();
@@ -20,9 +23,9 @@ const StudentSideBar = () => {
 
 
   return (
-    <div className={`h-screen ${sideBarStatus ? "w-[12vw]" : "w-[5vw]"} bg-[#9f86c0] fixed top-0 overflow-x-hidden transition-all duration-200 ease-in-out`} >
+    <div className={`h-screen ${sideBarStatus ? "w-[12vw]" : "w-[5vw]"} bg-[#ffffff] border border-gray-300 fixed top-0 overflow-x-hidden transition-all duration-200 ease-in-out`} >
         <header className='flex justify-end px-3 py-4' >
-          <p onClick={() => dispatch(openSlice())} className='text-3xl cursor-pointer' >{sideBarStatus ? <TbLayoutSidebarLeftCollapse/> : <TbLayoutSidebarLeftExpand />}</p>
+          <p onClick={() => dispatch(openSlice())} className='text-xl cursor-pointer' >{sideBarStatus ? <FaAngleLeft/> : <FaAngleRight />}</p>
         </header>
         <div className='absolute w-full top-[50%] translate-y-[-50%]' >
         {studentSideBarNav.map((Element , id) => (
@@ -35,7 +38,9 @@ const StudentSideBar = () => {
         ))}
         </div>
 
-      <button onClick={logout} className='bg-black text-white w-full absolute py-3 bottom-0' >Logout</button>
+        <div onClick={logout} className='flex justify-center absolute bottom-0 items-center gap-2 w-full cursor-pointer py-4' >
+      <p className='text-black text-2xl' ><CiLogout/></p>
+      </div>
     </div>
   )
 }

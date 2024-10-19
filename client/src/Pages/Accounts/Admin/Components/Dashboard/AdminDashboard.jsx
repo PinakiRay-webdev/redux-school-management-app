@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMentors, getUsers } from "../../../../../Redux/slice/userSlice";
 import { Admin_Dashboard_Stats } from "../../../../../Utils/Utils";
 import AddUsers from '../../AddUsers'
-import MiniCalender from "./MiniCalender";
+import MiniCalender from "../../../../Global/Calender/MiniCalender";
 
 
 const AdminDashboard = () => {
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 
 
   return (
-    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out pr-12 bg-[#f5f3f4] h-[90vh]`}>
+    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out pr-12 bg-[#f5f3f4] h-screen`}>
       <div className="px-3 py-5">
         {/* stats section  */}
         <div className="grid grid-cols-5 grid-rows-4 gap-2">

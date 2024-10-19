@@ -8,9 +8,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteEvent, getEvents } from "../../../../../Redux/slice/EventSlice";
-import AddEvents from "../../../../Global/Calender/AddEvent";
-import EditEvent from "../../../../Global/Calender/EditEvent";
+import { deleteEvent, getEvents } from "../../../Redux/slice/EventSlice";
+import AddEvents from "./AddEvent";
+import EditEvent from "./EditEvent";
 
 const MiniCalender = () => {
   const [eventForm, setEventForm] = useState("scale-0");
@@ -22,7 +22,7 @@ const MiniCalender = () => {
 
   useEffect(() => {
     dispatch(getEvents());
-  }, [dispatch, eventData]);
+  }, [dispatch]);
 
   const handleAddEvent = () => {
     setEventForm("scale-100");
@@ -33,8 +33,10 @@ const MiniCalender = () => {
     setCurrentEvent(eventID);
   }
 
+  const isAdmin = JSON.parse(localStorage.getItem('adminCredentials'));
+
   return (
-    <div className="shadow-lg w-fit rounded-lg border border-zinc-300 h-[68vh]">
+    <div className="shadow-lg w-fit rounded-lg border border-zinc-300 h-full">
       <div className="bg-[#f1faee]">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DateCalendar", "DateCalendar"]}>
@@ -51,7 +53,9 @@ const MiniCalender = () => {
           onClick={handleAddEvent}
         >
           <h1 className="text-white py-1 px-3">Upcoming Events</h1>
+          {isAdmin && (
           <RiStickyNoteAddLine className="text-white text-xl mr-3 cursor-pointer" />
+          )}
         </div>
 
         {eventData?.map((Element, id) => (
@@ -72,14 +76,18 @@ const MiniCalender = () => {
               </div>
             </div>
 
+            {
+              isAdmin && (
             <div className="flex items-center gap-3" >
               <p onClick={() => handleEditEvent(Element.id)} className="text-2xl cursor-pointer" ><LiaEditSolid/></p>
               <p onClick={()=>useDispatch(deleteEvent(Element.id))} className="text-2xl cursor-pointer" ><MdOutlineDeleteOutline/></p>
             </div>
+              )
+            }
           </div>
         ))}
       </div>
-
+      
       <AddEvents eventForm={eventForm} setEventForm={setEventForm} />
       <EditEvent editEvent={editEvent} setEditEvent={setEditEvent} currentEvent = {currentEvent} />
 
