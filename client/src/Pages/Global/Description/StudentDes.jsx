@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector , useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { getUsers } from '../../../../Redux/slice/userSlice';
+import { getUsers } from '../../../Redux/slice/userSlice';
 const StudentDes = () => {
 
     const params = useParams();

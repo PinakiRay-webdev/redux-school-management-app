@@ -11,7 +11,7 @@ import AdminSubjects from './Pages/Accounts/Admin/Components/Subjects/AdminSubje
 
 import Chat from "./Pages/chat/Chat";
 import AdminSettings from './Pages/Accounts/Admin/Components/Settings/AdminSettings'
-import StudentDes from "./Pages/Accounts/Admin/Components/StudentDes";
+import StudentDes from "./Pages/Global/Description/StudentDes";
 import TeacherDes from "./Pages/Accounts/Admin/Components/Description/TeacherDes";
 import MentorDashboard from './Pages/Accounts/Mentor/Components/MentorDashboard'
 import MentorSidebar from './Pages/Accounts/Mentor/MentorSidebar'
