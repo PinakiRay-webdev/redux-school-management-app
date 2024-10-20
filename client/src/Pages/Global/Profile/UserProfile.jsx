@@ -12,19 +12,23 @@ const UserProfile = () => {
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
 
   const student = JSON.parse(localStorage.getItem("studentCredentials"));
+  const mentor = JSON.parse(localStorage.getItem("mentorCredentials"));
 
   const currentStudent = useSelector((state) =>
-    state.user.students.find((e) => e.Email === student.student_mail)
+    state.user.students?.find((e) => e.Email === student?.student_mail)
+  );
+
+  const currentMentor = useSelector((state) =>
+    state.user.mentors?.find((e) => e.Email === mentor?.mentor_mail)
   );
 
   const navigate = useNavigate();
 
-
   const handleEdit = () => {
+    navigate("/studentDashboard/profile/editProfile");
+  };
 
-    navigate('/studentDashboard/profile/editProfile')
-    
-  }
+  const currentUser = currentMentor || currentStudent;
 
   return (
     <div
@@ -34,9 +38,13 @@ const UserProfile = () => {
     >
       <div className="px-3 py-2">
         <main className="h-[65vh] border relative">
-
-            {/* edit profile button */}
-            <p onClick={handleEdit} className="absolute right-4 top-4 text-3xl text-purple-600 cursor-pointer" ><FaUserEdit/></p>
+          {/* edit profile button */}
+          <p
+            onClick={handleEdit}
+            className="absolute right-4 top-4 text-3xl text-purple-600 cursor-pointer"
+          >
+            <FaUserEdit />
+          </p>
 
           {/* background image */}
           <div className="w-full h-[30vh] bg-purple-200">
@@ -48,7 +56,7 @@ const UserProfile = () => {
             <div className="absolute bottom-10 left-8 w-[90vw] flex items-start justify-between">
               <div>
                 <h1 className="capitalize font-bold text-3xl">
-                  {currentStudent?.FirstName} {currentStudent?.LastName}
+                  {currentUser?.FirstName} {currentUser?.LastName}
                 </h1>
                 {/* user address  */}
                 <div className="flex gap-2 items-center py-1">
@@ -56,30 +64,47 @@ const UserProfile = () => {
                     <CiLocationOn />
                   </p>
                   <p>
-                    {currentStudent?.City ? currentStudent?.City : "Not Known"}, {currentStudent?.State ? currentStudent.State : "Not Known"}
+                    {currentUser?.City ? currentUser?.City : "Not Known"},{" "}
+                    {currentUser?.State ? currentUser?.State : "Not Known"}
                   </p>
                 </div>
 
                 {/* bio of user  */}
+                {currentStudent && (
                 <p>
                   {currentStudent?.Role} of {currentStudent?.Class}
                   <sup>th</sup> class
                 </p>
+                )}
+
+                {currentMentor && (
+                  <p>
+                    {currentMentor?.Role} of {currentMentor?.Department} subject
+                  </p>
+                )}
               </div>
 
-                {/* personal details  */}
+              {/* personal details  */}
               <div>
                 <div className="flex items-center gap-2">
                   <p>
                     <CiHome />
                   </p>
-                  <p>{currentStudent?.Landmark ? currentStudent?.Landmark : "Not Known"}</p>
+                  <p>
+                    {currentStudent?.Landmark
+                      ? currentStudent?.Landmark
+                      : "Not Known"}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <p>
                     <CiPhone />
                   </p>
-                  <p>{currentStudent?.Phone ? currentStudent?.Phone : "Not known"}</p>
+                  <p>
+                    {currentStudent?.Phone
+                      ? currentStudent?.Phone
+                      : "Not known"}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <p>
@@ -89,13 +114,19 @@ const UserProfile = () => {
                       <IoIosFemale />
                     )}
                   </p>
-                  <p>{currentStudent?.Gender ? currentStudent?.Gender : "Not Known"}</p>
+                  <p>
+                    {currentStudent?.Gender
+                      ? currentStudent?.Gender
+                      : "Not Known"}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <p>
                     <BsCake2 />
                   </p>
-                  <p>{currentStudent?.DOB ? currentStudent?.DOB : "Not Known" }</p>
+                  <p>
+                    {currentStudent?.DOB ? currentStudent?.DOB : "Not Known"}
+                  </p>
                 </div>
               </div>
             </div>

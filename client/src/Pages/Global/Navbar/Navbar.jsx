@@ -44,6 +44,9 @@ const Navbar = () => {
     const viewProfile = () =>{
         if(student){
             navigate('/studentDashboard/profile')
+        }
+        if(mentor){
+            navigate('/mentorDashboard/Profile')
         }   
     }
 

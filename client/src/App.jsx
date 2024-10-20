@@ -153,6 +153,16 @@ const App = () => {
       )
     },
     {
+      path: "/mentorDashboard/profile",
+      element:(
+        <>
+        <Navbar/>
+        <MentorSidebar/>
+        <UserProfile/>
+        </>
+      )
+    },
+    {
       path: "/mentor/student/:id",
       element:(
         <>
