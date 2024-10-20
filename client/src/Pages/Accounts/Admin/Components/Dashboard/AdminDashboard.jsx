@@ -41,9 +41,11 @@ const AdminDashboard = () => {
 
   return (
     <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out pr-12  h-screen ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"}`}>
-      <div className="px-3 py-5">
+      <div className="px-3 py-5 grid grid-cols-5 grid-rows-4 gap-5 h-[90vh] ">
         {/* stats section  */}
-        <div className="grid grid-cols-5 grid-rows-4 gap-2">
+        <div className="col-span-4 row-span-1">
+          <div className="grid grid-cols-4 gap-3 grid-rows-1" >
+
           {Admin_Dashboard_Stats.map((Element, id) => (
             <div
               key={id}
@@ -63,18 +65,21 @@ const AdminDashboard = () => {
               </div>
             </div>
           ))}
-
           {/* adding of a new user section  */}
           <div onClick={handleForm} className="bg-amber-300 flex flex-col items-center justify-center rounded-lg cursor-pointer" >
             <p className="text-7xl text-[#ff5400]" ><PiUserPlus/></p>
           </div>
-
-          <div className="row-span-4" >
-          <MiniCalender/>
           </div>
 
         </div>
 
+        <div className="col-span-1 row-span-4" >
+          <MiniCalender/>
+          </div>
+
+          <div className="row-span-3 col-span-4 border border-black" >
+
+          </div>
           
       </div>
         
