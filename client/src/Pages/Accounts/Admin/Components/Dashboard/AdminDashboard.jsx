@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMentors, getUsers } from "../../../../../Redux/slice/userSlice";
 import { Admin_Dashboard_Stats } from "../../../../../Utils/Utils";
 import AddUsers from '../../AddUsers'
-
+import MiniCalendar from "../../../../Global/Calender/MiniCalendar";
 
 const AdminDashboard = () => {
 
@@ -39,10 +39,10 @@ const AdminDashboard = () => {
 
 
   return (
-    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out pr-12  h-screen ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"}`}>
-      <div className="px-3 py-5 grid grid-cols-5 grid-rows-4 gap-5 h-[90vh] ">
+    <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out  h-screen ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"}`}>
+      <div className=" py-5 grid grid-cols-4 grid-rows-4 gap-7 h-[90vh]">
         {/* stats section  */}
-        <div className="col-span-4 row-span-1">
+        <div className="col-span-3 row-span-1">
           <div className="grid grid-cols-4 gap-3 grid-rows-1" >
 
           {Admin_Dashboard_Stats.map((Element, id) => (
@@ -73,10 +73,9 @@ const AdminDashboard = () => {
         </div>
 
         <div className="col-span-1 row-span-4" >
-          {/* <MiniCalender/> */}
+          <MiniCalendar/>
           </div>
-
-          <div className="row-span-3 col-span-4 border border-black" >
+          <div className="row-span-3 col-span-3 border border-black" >
 
           </div>
           

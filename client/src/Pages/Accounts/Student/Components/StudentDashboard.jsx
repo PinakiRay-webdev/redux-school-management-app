@@ -11,7 +11,6 @@ const StudentDashboard = () => {
 
   const studentInfo = useSelector((state) => state.user.students);
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
-  const events = useSelector((state) => state.events.eventList);
 
   const currentStudentInfo = studentInfo?.find(
     (e) => e.Email === currentUser?.student_mail
@@ -82,7 +81,7 @@ const StudentDashboard = () => {
               <div className="flex items-end gap-3 pt-3">
                 <p className="text-7xl" ><FcCalendar /></p>
                 <p className="font-bold text-4xl text-violet-700">
-                  {events?.length}
+                  {/* {events?.length} */}
                 </p>
               </div>
             </div>
