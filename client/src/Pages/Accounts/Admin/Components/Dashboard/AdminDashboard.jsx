@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMentors, getUsers } from "../../../../../Redux/slice/userSlice";
 import { Admin_Dashboard_Stats } from "../../../../../Utils/Utils";
 import AddUsers from '../../AddUsers'
-import MiniCalender from "../../../../Global/Calender/MiniCalender";
 
 
 const AdminDashboard = () => {
@@ -74,7 +73,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="col-span-1 row-span-4" >
-          <MiniCalender/>
+          {/* <MiniCalender/> */}
           </div>
 
           <div className="row-span-3 col-span-4 border border-black" >

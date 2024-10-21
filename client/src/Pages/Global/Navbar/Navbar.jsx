@@ -18,7 +18,6 @@ const Navbar = () => {
     const navigate = useNavigate();
     const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
     const theme = useSelector((state) => state.theme.isBlack);
-    console.log(theme);
     
     const dispatch = useDispatch();
     

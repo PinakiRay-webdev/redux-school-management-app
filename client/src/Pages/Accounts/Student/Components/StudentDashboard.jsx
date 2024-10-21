@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "react-circular-progressbar/dist/styles.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { BarChart } from "@mui/x-charts/BarChart";
-import MiniCalender from "../../../Global/Calender/MiniCalender";
+import { FcCalendar , FcSalesPerformance  } from "react-icons/fc";
+
 
 const StudentDashboard = () => {
   const currentUser = JSON.parse(localStorage.getItem("studentCredentials"));
 
   const studentInfo = useSelector((state) => state.user.students);
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
+  const events = useSelector((state) => state.events.eventList);
 
   const currentStudentInfo = studentInfo?.find(
     (e) => e.Email === currentUser?.student_mail
@@ -17,6 +19,7 @@ const StudentDashboard = () => {
 
   const [avgMarks, setAvgMarks] = useState(0);
   const [marks, setMarks] = useState([]);
+  const [highestMarks, setHighestMarks] = useState(null)
 
   useEffect(() => {
     const delay = setInterval(() => {
@@ -31,7 +34,17 @@ const StudentDashboard = () => {
     };
   }, [currentStudentInfo]);
 
+  const getHighestMarks = ()=> {
+    marks.forEach((mark) => {
+      let temp = Math.max(mark , highestMarks)
+      setHighestMarks(temp)
+    })
+  }
 
+  useEffect(()=>{
+    getHighestMarks()
+  },[getHighestMarks])
+  
 
   return (
     <div
@@ -64,16 +77,12 @@ const StudentDashboard = () => {
             {/* for testing  */}
             <div className="border border-zinc-300 rounded-lg h-32 px-3 py-2 shadow-xl">
               <h1 className="font-semibold capitalize">
-                Your Average mark is{" "}
+                No. of Events Arranged
               </h1>
               <div className="flex items-end gap-3 pt-3">
-                <CircularProgress
-                  size={75}
-                  variant="determinate"
-                  value={avgMarks}
-                />
+                <p className="text-7xl" ><FcCalendar /></p>
                 <p className="font-bold text-4xl text-violet-700">
-                  {currentStudentInfo?.avgMark}
+                  {events?.length}
                 </p>
               </div>
             </div>
@@ -81,16 +90,12 @@ const StudentDashboard = () => {
             {/* for testing  */}
             <div className="border border-zinc-300 rounded-lg h-32 px-3 py-2 shadow-xl">
               <h1 className="font-semibold capitalize">
-                Your Average mark is{" "}
+                Your Highest score is
               </h1>
               <div className="flex items-end gap-3 pt-3">
-                <CircularProgress
-                  size={75}
-                  variant="determinate"
-                  value={avgMarks}
-                />
+                <p className="text-7xl"><FcSalesPerformance/></p>
                 <p className="font-bold text-4xl text-violet-700">
-                  {currentStudentInfo?.avgMark}
+                  {highestMarks}/<span className="text-sm" >100</span>
                 </p>
               </div>
             </div>
@@ -98,7 +103,7 @@ const StudentDashboard = () => {
         </div>
 
         <div className="row-span-4 col-span-1">
-          <MiniCalender />
+          {/* <MiniCalender /> */}
         </div>
 
         <div className="row-span-3 col-span-3 border border-zinc-300 rounded-lg shadow-xl">
