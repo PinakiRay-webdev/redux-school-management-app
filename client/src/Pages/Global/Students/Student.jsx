@@ -17,6 +17,8 @@ const Student = () => {
     state.user.students.filter((role) => role.Role === "student")
   );
   const theme = useSelector((state) => state.theme.isBlack);
+  const sidebarStatus = useSelector((state) => state.sidebar.isOpen);
+
   const dispatch = useDispatch();
 
   const isAdminLoggedIn = JSON.parse(localStorage.getItem("adminCredentials"));
@@ -47,7 +49,7 @@ const Student = () => {
 
 
   return (
-    <div className={`w-full h-fit pl-32 ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"} h-screen`}>
+    <div className={`w-full h-fit ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"} h-screen ${sidebarStatus ? "pl-[12vw]" : "pl-[5vw]" }`}>
       {/* mini navbar section for filter */}
 
       <div className="px-3 py-5">

@@ -129,7 +129,10 @@
       "avgMark": 57,
       "Phone": "7847066316",
       "DOB": "2024-10-15",
-      "Gender": "male"
+      "Gender": "male",
+      "State": "odisha",
+      "City": "bhubaneswar",
+      "Landmark": "bikash nagar , jatani"
     },
     {
       "id": "3cea",
