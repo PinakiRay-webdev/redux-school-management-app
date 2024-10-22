@@ -20,6 +20,8 @@ const MiniCalendar = () => {
   const eventData = useSelector((state) => state.events.eventList);
   const dispatch = useDispatch();
 
+  const isAdmin = JSON.parse(localStorage.getItem('adminCredentials'))
+
   useEffect(() => {
     if(eventData){
       dispatch(getEvents());
@@ -39,16 +41,18 @@ const MiniCalendar = () => {
         </DemoContainer>
         <div className="bg-black py-2 px-1 mt-[-1rem] relative z-10 flex items-center justify-between">
           <p className="text-white capitalize">Upcomming events</p>
+          {isAdmin && (
           <p
             onClick={openForm}
             className="text-white capitalize cursor-pointer text-xl"
           >
             <MdOutlineAddCircleOutline />
           </p>
+          )}
         </div>
         <div>
           {eventData?.map((Element, id) => (
-            <div key={id} className="flex items-end my-2 justify-between shadow-xl rounded-lg py-1">
+            <div key={id} className="flex items-end my-2 justify-between rounded-lg py-1 border">
               <div className="flex items-start px-2 gap-2">
                 <p className="py-4 px-1 bg-green-600 rounded-lg"></p>
                 <div>
@@ -57,10 +61,12 @@ const MiniCalendar = () => {
                 </div>
               </div>
 
+              {isAdmin && (
               <div className="flex gap-3" >
                 <p className="text-xl text-green-600" ><MdEditDocument/></p>
                 <p className="text-xl text-green-600"><MdDelete/></p>
               </div>
+              )}
             </div>
           ))}
         </div>

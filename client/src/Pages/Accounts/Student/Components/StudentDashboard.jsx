@@ -4,13 +4,14 @@ import "react-circular-progressbar/dist/styles.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { FcCalendar , FcSalesPerformance  } from "react-icons/fc";
-
+import MiniCalendar from "../../../Global/Calender/MiniCalendar";
 
 const StudentDashboard = () => {
   const currentUser = JSON.parse(localStorage.getItem("studentCredentials"));
 
   const studentInfo = useSelector((state) => state.user.students);
   const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
+  const events = useSelector((state) => state.events.eventList);
 
   const currentStudentInfo = studentInfo?.find(
     (e) => e.Email === currentUser?.student_mail
@@ -81,7 +82,7 @@ const StudentDashboard = () => {
               <div className="flex items-end gap-3 pt-3">
                 <p className="text-7xl" ><FcCalendar /></p>
                 <p className="font-bold text-4xl text-violet-700">
-                  {/* {events?.length} */}
+                  {events?.length}
                 </p>
               </div>
             </div>
@@ -102,7 +103,7 @@ const StudentDashboard = () => {
         </div>
 
         <div className="row-span-4 col-span-1">
-          {/* <MiniCalender /> */}
+          <MiniCalendar />
         </div>
 
         <div className="row-span-3 col-span-3 border border-zinc-300 rounded-lg shadow-xl">
