@@ -29,6 +29,7 @@ const EditEvent = ({ editEvent, setEditEvent , currentEvent }) => {
       setValue("title" , selectedEvent.title)
       setValue("subtitle" , selectedEvent.subtitle)
       setValue('startDate' , selectedEvent.start)
+      setValue('endDate' , selectedEvent.end)
   }
   },[selectedEvent])
 

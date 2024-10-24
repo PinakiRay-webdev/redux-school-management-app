@@ -12,7 +12,6 @@ import EditUsers from "../../Accounts/Admin/EditUsers";
 import AssignMarks from "../../Accounts/Mentor/AssignMarks";
 
 const Student = () => {
-  
   const usersData = useSelector((state) =>
     state.user.students.filter((role) => role.Role === "student")
   );
@@ -41,15 +40,17 @@ const Student = () => {
     setUserID(id);
   };
 
-  const openMarksForm = (id) =>{
+  const openMarksForm = (id) => {
     setIsMarksActivate("scale-100");
     setUserID(id);
-  }
-
-
+  };
 
   return (
-    <div className={`w-full h-fit ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"} h-screen ${sidebarStatus ? "pl-[12vw]" : "pl-[5vw]" }`}>
+    <div
+      className={`w-full h-fit ${
+        theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"
+      } h-screen ${sidebarStatus ? "pl-[12vw]" : "pl-[5vw]"}`}
+    >
       {/* mini navbar section for filter */}
 
       <div className="px-3 py-5">
@@ -122,7 +123,10 @@ const Student = () => {
 
                   {isMentorLoggedIn && (
                     <div className="flex items-center gap-1">
-                      <p onClick={() => openMarksForm(Element.id)} className="text-xl cursor-pointer text-red-600 flex">
+                      <p
+                        onClick={() => openMarksForm(Element.id)}
+                        className="text-xl cursor-pointer text-red-600 flex"
+                      >
                         <MdCreditScore />
                       </p>
                     </div>
@@ -142,8 +146,8 @@ const Student = () => {
 
       {isMentorLoggedIn && (
         <AssignMarks
-        isMarksActivate={isMarksActivate}
-        setIsMarksActivate={setIsMarksActivate}
+          isMarksActivate={isMarksActivate}
+          setIsMarksActivate={setIsMarksActivate}
           userID={userID}
         />
       )}
