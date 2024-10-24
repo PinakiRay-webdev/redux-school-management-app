@@ -42,6 +42,33 @@ export const assignment = MdOutlineAssignmentTurnedIn;
 export const messages = LuMessagesSquare;
 export const calendarIcon = CiCalendarDate
 
+export const homeNavBar = [
+  {
+    id : 1,
+    item : 'home'
+  },
+  {
+    id : 2,
+    item : 'about us'
+  },
+  {
+    id : 3,
+    item : 'courses'
+  },
+  {
+    id : 4,
+    item : 'pages',
+  },
+  {
+    id : 5,
+    item : 'blog'
+  },
+  {
+    id : 6,
+    item : 'contact'
+  }
+]
+
 export const sideBarNav = [
   {
     id: 1,

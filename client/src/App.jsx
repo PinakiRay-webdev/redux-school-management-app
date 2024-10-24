@@ -26,12 +26,21 @@ import StudentSettings from './Pages/Accounts/Student/Components/StudentSettings
 import EditProfile from './Pages/Accounts/Student/EditProfile'
 import UserProfile from "./Pages/Global/Profile/UserProfile";
 import StudentSideBar from "./Pages/Accounts/Student/StudentSideBar";
+import Home from "./Pages/Home/Home";
 
 
 const App = () => {
   const myRouter = createBrowserRouter([
     {
       path: "/",
+      element: (
+        <>
+          <Home />
+        </>
+      ),
+    },
+    {
+      path: "/login",
       element: (
         <>
           <Login />
