@@ -6,6 +6,9 @@ import githubIcon from "../assets/github.svg";
 import googleIcon from "../assets/google.svg";
 import facebookIcon from "../assets/facebook.svg";
 import adminPic from "../assets/adminPic.svg";
+import herobg from '../assets/heroBG.svg'
+import instruct from '../assets/instructor.svg'
+import heroArrow from '../assets/heroArrow.svg'
 
 import { MdOutlineDashboard } from "react-icons/md";
 import { PiStudent, PiChalkboardTeacher } from "react-icons/pi";
@@ -40,7 +43,10 @@ export const classes = FaChalkboardTeacher;
 export const statistics = BiStats;
 export const assignment = MdOutlineAssignmentTurnedIn;
 export const messages = LuMessagesSquare;
-export const calendarIcon = CiCalendarDate
+export const calendarIcon = CiCalendarDate;
+export const heroBg = herobg
+export const instructor = instruct
+export const arrow = heroArrow
 
 export const homeNavBar = [
   {

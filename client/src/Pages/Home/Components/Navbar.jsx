@@ -20,7 +20,7 @@ const Navbar = () => {
     }
 
   return (
-    <div className={`w-full h-fit border-b ${theme ? "bg-[#101214]" : "bg-white"} `}>
+    <div className={`w-full h-[10vh] border-b ${theme ? "bg-[#101214]" : "bg-white"} `}>
         <div className='max-w-screen-xl mx-auto h-[10vh] flex items-center justify-between' >
             <h1 className={`${theme ? "text-green-600" : "text-green-900"} text-4xl font-semibold`} >Schoolify</h1>
 
