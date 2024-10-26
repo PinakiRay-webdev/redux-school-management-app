@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar'
 import Hero from './Components/hero/Hero'
 import Categories from './Components/Categories/Categories'
 import Courses from './Components/Courses/Courses'
+import  Grow  from './Components/Grow/Grow'
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero/>
       <Categories/>
       <Courses/>
+      <Grow/>
     </div>
   )
 }

@@ -48,29 +48,6 @@
   ],
   "students": [
     {
-      "id": "aceb",
-      "FirstName": "navin",
-      "LastName": "reddy",
-      "Email": "navin@student.com",
-      "Role": "student",
-      "Password": "123",
-      "Class": "12",
-      "Marks": {
-        "physics": "88",
-        "maths": "84",
-        "chemistry": "88",
-        "biology": "75",
-        "IT": "55"
-      },
-      "avgMark": 78,
-      "Phone": "64738847573",
-      "Gender": "male",
-      "DOB": "2024-10-15",
-      "State": "Karnataka",
-      "City": "Bengaluru",
-      "Landmark": "marthaghalli"
-    },
-    {
       "id": "a411",
       "FirstName": "bibek",
       "LastName": "Mohanty",
