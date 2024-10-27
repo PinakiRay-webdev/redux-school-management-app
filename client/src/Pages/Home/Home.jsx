@@ -5,6 +5,7 @@ import Categories from './Components/Categories/Categories'
 import Courses from './Components/Courses/Courses'
 import  Grow  from './Components/Grow/Grow'
 import Benefits from './Components/Benefots/Benefits'
+import Footer from './Components/Footer/Footer'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Courses/>
       <Grow/>
       <Benefits/>
+      <Footer/>
     </div>
   )
 }
