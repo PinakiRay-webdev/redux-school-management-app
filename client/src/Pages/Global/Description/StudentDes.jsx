@@ -1,30 +1,36 @@
-import React, { useEffect } from 'react'
-import { useSelector , useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom'
-import { getUsers } from '../../../Redux/slice/userSlice';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getUsers } from "../../../Redux/slice/userSlice";
 import { CiLocationOn, CiHome, CiPhone } from "react-icons/ci";
 import { IoIosFemale, IoIosMale } from "react-icons/io";
 import { BsCake2 } from "react-icons/bs";
-import { FaUserEdit } from "react-icons/fa";
+import { PieChart } from "@mui/x-charts/PieChart";
+
 
 const StudentDes = () => {
+  const params = useParams();
+  const studentID = params.id;
 
-    const params = useParams();
-    const studentID = params.id;
+  const studentData = useSelector((state) =>
+    state.user.students.find((e) => e.id === studentID)
+  );
+  const sideBarStatus = useSelector((state) => state.sidebar.isOpen);
+  const dispatch = useDispatch();
 
-    const studentData = useSelector((state) => state.user.students.find((e) => e.id === studentID))
-    const sideBarStatus = useSelector((state) => state.sidebar.isOpen)
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
-    useEffect(()=>{
-        dispatch(getUsers());
-    },[dispatch])
+
 
   return (
-    <div className={`w-full h-fit ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} `} >
-        <div className='' >
+    <div
+      className={`w-full h-fit ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} `}
+    >
+      <div className="">
         <main className="h-[65vh] border relative">
-        <div className="w-full h-[30vh] bg-purple-200">
+          <div className="w-full h-[30vh] bg-purple-200">
             {/* userImage */}
             <div className="w-[10rem] h-[10rem] rounded-full bg-purple-400 absolute top-32 border-4 border-white  left-8"></div>
 
@@ -52,10 +58,9 @@ const StudentDes = () => {
                   <sup>th</sup> class
                 </p>
 
-
-                  <p>
-                    {studentData?.Role} of {studentData?.Department} subject
-                  </p>
+                <p>
+                  {studentData?.Role} of {studentData?.Department} subject
+                </p>
               </div>
 
               {/* personal details  */}
@@ -74,11 +79,7 @@ const StudentDes = () => {
                   <p>
                     <CiPhone />
                   </p>
-                  <p>
-                    {studentData?.Phone
-                      ? studentData?.Phone
-                      : "Not known"}
-                  </p>
+                  <p>{studentData?.Phone ? studentData?.Phone : "Not known"}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <p>
@@ -89,26 +90,38 @@ const StudentDes = () => {
                     )}
                   </p>
                   <p>
-                    {studentData?.Gender
-                      ? studentData?.Gender
-                      : "Not Known"}
+                    {studentData?.Gender ? studentData?.Gender : "Not Known"}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <p>
                     <BsCake2 />
                   </p>
-                  <p>
-                    {studentData?.DOB ? studentData?.DOB : "Not Known"}
-                  </p>
+                  <p>{studentData?.DOB ? studentData?.DOB : "Not Known"}</p>
                 </div>
               </div>
             </div>
           </div>
         </main>
-        </div>
-    </div>
-  )
-}
 
-export default StudentDes
+        <PieChart
+          series={[
+            {
+              data: [
+                { id: 0, label: "Physics", value: studentData?.Marks?.physics || 0},
+                { id: 1, label: "Math", value: studentData?.Marks?.maths || 0},
+                { id: 2, label: "Chemistry", value: studentData?.Marks?.chemistry || 0},
+                { id: 3, label: "Biology", value: studentData?.Marks?.biology || 0},
+                { id: 4, label: "IT", value: studentData?.Marks?.IT || 0},
+              ],
+            },
+          ]}
+          width={500}
+          height={300}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default StudentDes;

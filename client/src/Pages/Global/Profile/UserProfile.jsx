@@ -5,7 +5,6 @@ import { IoIosFemale, IoIosMale } from "react-icons/io";
 import { BsCake2 } from "react-icons/bs";
 import { FaUserEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const UserProfile = () => {
