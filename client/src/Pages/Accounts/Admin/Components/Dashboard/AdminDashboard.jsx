@@ -36,6 +36,8 @@ const AdminDashboard = () => {
     dispatch(getMentors());
   }, [dispatch]);
 
+  const totalAvgMark = parseFloat(students.reduce((sum, student) => sum + (student.avgMark || 0), 0));;
+
   return (
     <div
       className={`w-full h-fit overflow-y-hidden ${
@@ -80,7 +82,9 @@ const AdminDashboard = () => {
         <div className="col-span-1 row-span-4">
           <MiniCalendar />
         </div>
-        <div className="row-span-3 col-span-3 border"></div>
+        <div className="row-span-3 col-span-3 border">
+          <p>{totalAvgMark}</p>
+        </div>
       </div>
 
       <AddUsers isFormOpen={isFormOpen} setIsFormOpen={setIsFormOpen} />
