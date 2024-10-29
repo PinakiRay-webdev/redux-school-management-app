@@ -8,9 +8,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server1" : "json-server --watch users.json --port 3000",
-    "server2" : "json-server --watch events.json --port 3001",
-    "dev" : "concurrently \"npm run start\" \"npm run server1\" \"npm run server2\""
+    "server1": "json-server --watch users.json --port 3000",
+    "server2": "json-server --watch events.json --port 3001",
+    "server": "concurrently \"npm run server1\" \"npm run server2\"",
+    "dev": "concurrently \"npm run start\" \"npm run server\""
   },
   "dependencies": {
     "@aldabil/react-scheduler": "^2.9.5",
