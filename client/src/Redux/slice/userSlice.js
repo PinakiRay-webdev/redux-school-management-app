@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL_students = "http://localhost:3000/students";
-const BASE_URL_mentors = "http://localhost:3000/mentors";
+// const BASE_URL_students = "http://localhost:3000/students";
+const BASE_URL_students = "https://redux-school-management-app.onrender.com/students";
+// const BASE_URL_mentors = "http://localhost:3000/mentors";
+const BASE_URL_mentors = "https://redux-school-management-app.onrender.com/mentors";
 
 // Get students from the JSON server
 export const getUsers = createAsyncThunk("getUsers", async () => {
