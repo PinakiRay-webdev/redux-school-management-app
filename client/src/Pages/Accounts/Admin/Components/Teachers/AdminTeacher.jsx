@@ -7,7 +7,7 @@ import { PiBooksDuotone } from "react-icons/pi";
 import { FaUserTie, FaUserTag } from "react-icons/fa";
 import { LiaUserEditSolid } from "react-icons/lia";
 import { CiMenuKebab } from "react-icons/ci";
-import { getMentors} from "../../../../../Redux/slice/userSlice";
+import { deleteMentor, getMentors} from "../../../../../Redux/slice/userSlice";
 
 const AdminTeacher = () => {
   const userData = useSelector((state) =>
@@ -29,6 +29,10 @@ const AdminTeacher = () => {
     setIsEditActivate("scale-100");
     setUserID(id);
   };
+
+  const removeMentor = (userID) =>{
+    dispatch(deleteMentor(userID))
+  }
 
   return (
     <div className={`w-full h-fit overflow-y-hidden ${sideBarStatus ? "pl-[12vw]" : "pl-[5vw]"} transition-all duration-150 ease-in-out ${theme ? "bg-[#0d1321]" : "bg-[#f5f3f4]"} h-screen`}>
@@ -82,7 +86,7 @@ const AdminTeacher = () => {
                   >
                     <LiaUserEditSolid />
                   </p>
-                  <p className="text-xl cursor-pointer text-red-600">
+                  <p onClick={() => removeMentor(Element.id)} className="text-xl cursor-pointer text-red-600">
                     <TbUserX />
                   </p>
                 </div>

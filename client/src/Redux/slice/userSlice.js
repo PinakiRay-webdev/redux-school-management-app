@@ -45,6 +45,10 @@ export const deleteUser = createAsyncThunk("deleteUser", async (userId) => {
   return userId;
 });
 
+export const deleteMentor = createAsyncThunk("deleteMentor" , async(userId) =>{
+  await axios.delete(`${BASE_URL_mentors}/${userId}`)
+})
+
 // Update user on the JSON server
 export const updateUser = createAsyncThunk("updateUser", async (updatedUser) => {
   const response = await axios.patch(`${BASE_URL_students}/${updatedUser.id}`, updatedUser, {
@@ -131,6 +135,22 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         console.error("Error deleting user:", action.error.message);
+      })
+
+      //handle delete mentor
+      .addCase(deleteMentor.pending , (state) =>{
+        state.isLoading = true,
+        state.isError = false
+      })
+      .addCase(deleteMentor.fulfilled , (state , action) =>{
+        state.isLoading = false,
+        state.mentors = state.mentors.filter((user) => user.id !== action.payload)
+      })
+      .addCase(deleteMentor.rejected , (state , action) =>{
+        state.isLoading = false,
+        state.isError = true,
+        console.log("Error : " + action.error.message);
+
       })
 
       // Handle updateUser
