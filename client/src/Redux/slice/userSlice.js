@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useId } from "react";
 
 // const BASE_URL_students = "http://localhost:3000/students";
 const BASE_URL_students = "https://redux-school-management-app.onrender.com/students";
@@ -47,6 +48,7 @@ export const deleteUser = createAsyncThunk("deleteUser", async (userId) => {
 
 export const deleteMentor = createAsyncThunk("deleteMentor" , async(userId) =>{
   await axios.delete(`${BASE_URL_mentors}/${userId}`)
+  return userId;
 })
 
 // Update user on the JSON server
@@ -120,7 +122,19 @@ export const userSlice = createSlice({
       })
 
       //handle create mentors
-      
+      .addCase(createMentor.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(createMentor.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.mentors.push(action.payload); // Add the new mentor to the mentors array
+      })
+      .addCase(createMentor.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        console.error("Error creating mentor:", action.error.message);
+      })
 
       // Handle deleteUser
       .addCase(deleteUser.pending, (state) => {
