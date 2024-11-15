@@ -4,7 +4,7 @@ import { useSelector , useDispatch } from 'react-redux';
 import { CiLocationOn, CiHome, CiPhone } from "react-icons/ci";
 import { IoIosFemale, IoIosMale } from "react-icons/io";
 import { BsCake2 } from "react-icons/bs";
-import { getMentors } from '../../../../../Redux/slice/userSlice';
+import { getMentors } from '../../../../Redux/slice/userSlice';
 
 const TeacherDes = () => {
     const params = useParams();

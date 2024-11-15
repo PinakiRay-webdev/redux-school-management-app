@@ -3,16 +3,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Auth/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Calender from "./components/Calender/Calender";
-import AdminSideBar from './Pages/Accounts/Admin/components/AdminSideBar'
-import AdminDashboard from './Pages/Accounts/Admin/Pages/Dashboard/AdminDashboard'
-import AdminTeacher from './Pages/Accounts/Admin/Pages/Teachers/AdminTeacher'
+import AdminSideBar from './Pages/Admin/components/AdminSideBar'
+import AdminDashboard from './Pages/Admin/Pages/Dashboard/AdminDashboard'
+import AdminTeacher from './Pages/Admin/Pages/Teachers/AdminTeacher'
 import AdminStudent from './components/Students/Student'
-import AdminSubjects from './Pages/Accounts/Admin/Pages/Subjects/AdminSubjects'
+import AdminSubjects from './Pages/Admin/Pages/Subjects/AdminSubjects'
 
 import Chat from "./Pages/chat/Chat";
-import AdminSettings from './Pages/Accounts/Admin/Pages/Settings/AdminSettings'
+import AdminSettings from './Pages/Admin/Pages/Settings/AdminSettings'
 import StudentDes from './components/Description/StudentDes'
-import TeacherDes from "./Pages/Accounts/Admin/Pages/Description/TeacherDes";
+import TeacherDes from "./Pages/Admin/Pages/Description/TeacherDes";
 import MentorDashboard from './Pages/Accounts/Mentor/pages/MentorDashboard'
 import MentorSidebar from './Pages/Accounts/Mentor/Components/MentorSidebar'
 import StudentDashboard from './Pages/Accounts/Student/Pages/Dashboard/StudentDashboard'

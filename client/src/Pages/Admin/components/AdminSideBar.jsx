@@ -1,10 +1,10 @@
 import React from "react";
-import { sideBarNav } from "../../../../Utils/Utils";
+import { sideBarNav } from "../../../Utils/Utils";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { openSlice } from "../../../../Redux/slice/collapseSlice";
+import { openSlice } from "../../../Redux/slice/collapseSlice";
 import { CiLogout } from "react-icons/ci";
 
 const AdminSideBar = () => {

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { PiUserPlus } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
-import { getMentors, getUsers } from "../../../../../Redux/slice/userSlice";
-import { Admin_Dashboard_Stats } from "../../../../../Utils/Utils";
+import { getMentors, getUsers } from "../../../../Redux/slice/userSlice";
+import { Admin_Dashboard_Stats } from "../../../../Utils/Utils";
 import AddUsers from "../../functions/AddUsers";
-import MiniCalendar from "../../../../../components/Calender/MiniCalendar";
+import MiniCalendar from "../../../../components/Calender/MiniCalendar";
 
 const AdminDashboard = () => {
   const [isFormOpen, setIsFormOpen] = useState("scale-0");
