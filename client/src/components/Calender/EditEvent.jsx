@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, updateEvent } from "../../../Redux/slice/EventSlice";
+import { getEvents, updateEvent } from "../../Redux/slice/EventSlice";
 
 
 const EditEvent = ({ editEvent, setEditEvent , currentEvent }) => {

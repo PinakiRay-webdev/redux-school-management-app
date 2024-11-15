@@ -8,8 +8,8 @@ import { LiaUserEditSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { CiMenuKebab } from "react-icons/ci";
 import { deleteUser, getUsers } from "../../Redux/slice/userSlice";
-import EditUsers from "../../Pages/Accounts/Admin/EditUsers";
-import AssignMarks from "../../Pages/Accounts/Mentor/AssignMarks";
+import EditUsers from "../../Pages/Accounts/Admin/functions/EditUsers";
+import AssignMarks from '../../Pages/Accounts/Mentor/functions/AssignMarks'
 
 const Student = () => {
   const usersData = useSelector((state) =>

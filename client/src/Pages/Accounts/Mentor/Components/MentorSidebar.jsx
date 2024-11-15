@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { mentorSideBar } from "../../../Utils/Utils";
+import { mentorSideBar } from "../../../../Utils/Utils";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
 import { useSelector, useDispatch } from "react-redux";
-import { openSlice } from "../../../Redux/slice/collapseSlice";
+import { openSlice } from "../../../../Redux/slice/collapseSlice";
 const MentorSidebar = () => {
   const navigate = useNavigate();
 

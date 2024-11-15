@@ -11,7 +11,7 @@ import {
 } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import AddEvent from "./AddEvent";
-import { deleteEvent, getEvents } from "../../../Redux/slice/EventSlice";
+import { deleteEvent, getEvents } from "../../Redux/slice/EventSlice";
 import EditEvent from "./EditEvent";
 
 const MiniCalendar = () => {

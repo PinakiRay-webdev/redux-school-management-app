@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { studentSideBarNav } from "../../../Utils/Utils";
+import { studentSideBarNav } from "../../../../Utils/Utils";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
-import { openSlice } from "../../../Redux/slice/collapseSlice";
+import { openSlice } from "../../../../Redux/slice/collapseSlice";
 import { CiLogout } from "react-icons/ci";
 
 const StudentSideBar = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import EditUsers from "../../EditUsers";
+import EditUsers from "../../functions/EditUsers";
 import { useSelector, useDispatch } from "react-redux";
 import { TbMessageCircleUser, TbUserX } from "react-icons/tb";
 import { PiBooksDuotone } from "react-icons/pi";

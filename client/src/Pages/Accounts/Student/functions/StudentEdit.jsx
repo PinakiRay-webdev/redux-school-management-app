@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../../../Redux/slice/userSlice";
+import { updateUser } from "../../../../Redux/slice/userSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const StudentEdit = ({ isEditable, setIsEditable, currentStudent }) => {

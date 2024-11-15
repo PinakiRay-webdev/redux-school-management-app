@@ -1,32 +1,32 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Auth/Login";
-import Navbar from "./Pages/Global/Navbar/Navbar";
-import Calender from "./Pages/Global/Calender/Calender";
-import AdminSideBar from './Pages/Accounts/Admin/AdminSideBar'
-import AdminDashboard from './Pages/Accounts/Admin/Components/Dashboard/AdminDashboard'
-import AdminTeacher from './Pages/Accounts/Admin/Components/Teachers/AdminTeacher'
-import AdminStudent from './Pages/Global/Students/Student'
-import AdminSubjects from './Pages/Accounts/Admin/Components/Subjects/AdminSubjects'
+import Navbar from "./components/Navbar/Navbar";
+import Calender from "./components/Calender/Calender";
+import AdminSideBar from './Pages/Accounts/Admin/components/AdminSideBar'
+import AdminDashboard from './Pages/Accounts/Admin/Pages/Dashboard/AdminDashboard'
+import AdminTeacher from './Pages/Accounts/Admin/Pages/Teachers/AdminTeacher'
+import AdminStudent from './components/Students/Student'
+import AdminSubjects from './Pages/Accounts/Admin/Pages/Subjects/AdminSubjects'
 
 import Chat from "./Pages/chat/Chat";
-import AdminSettings from './Pages/Accounts/Admin/Components/Settings/AdminSettings'
-import StudentDes from "./Pages/Global/Description/StudentDes";
-import TeacherDes from "./Pages/Accounts/Admin/Components/Description/TeacherDes";
-import MentorDashboard from './Pages/Accounts/Mentor/Components/MentorDashboard'
-import MentorSidebar from './Pages/Accounts/Mentor/MentorSidebar'
-import StudentDashboard from './Pages/Accounts/Student/Components/StudentDashboard'
-import StudentSubjects from './Pages/Accounts/Student/Components/StudentSubjects'
-import StudentClasses from './Pages/Accounts/Student/Components/StudentClasses'
+import AdminSettings from './Pages/Accounts/Admin/Pages/Settings/AdminSettings'
+import StudentDes from './components/Description/StudentDes'
+import TeacherDes from "./Pages/Accounts/Admin/Pages/Description/TeacherDes";
+import MentorDashboard from './Pages/Accounts/Mentor/pages/MentorDashboard'
+import MentorSidebar from './Pages/Accounts/Mentor/Components/MentorSidebar'
+import StudentDashboard from './Pages/Accounts/Student/Pages/Dashboard/StudentDashboard'
+import StudentSubjects from './Pages/Accounts/Student/Pages/Subjects/StudentSubjects'
+import StudentClasses from './Pages/Accounts/Student/Pages/Classes/StudentClasses'
 import StudentStats from './Pages/Accounts/Student/Components/StudentStats'
-import StudentMessages from './Pages/Accounts/Student/Components/StudentMessages'
-import StudentAssignments from './Pages/Accounts/Student/Components/StudentAssignments'
+import StudentMessages from './Pages/Accounts/Student/Pages/Messages/StudentMessages'
+import StudentAssignments from './Pages/Accounts/Student/Pages/Assignments/StudentAssignments'
 import StudentSettings from './Pages/Accounts/Student/Components/StudentSettings'
 
-import EditProfile from './Pages/Accounts/Student/EditProfile'
-import UserProfile from "./Pages/Global/Profile/UserProfile";
-import StudentSideBar from "./Pages/Accounts/Student/StudentSideBar";
-import Home from "./Pages/Home/Home";
+import EditProfile from './Pages/Accounts/Student/functions/EditProfile'
+import UserProfile from "./components/Profile/UserProfile";
+import StudentSideBar from "./Pages/Accounts/Student/Components/StudentSideBar";
+import Home from "./components/Home/Home"
 
 
 const App = () => {

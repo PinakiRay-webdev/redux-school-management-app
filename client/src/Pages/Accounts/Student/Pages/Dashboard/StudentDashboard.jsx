@@ -4,7 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import { BarChart } from "@mui/x-charts/BarChart";
 import { FcCalendar , FcSalesPerformance  } from "react-icons/fc";
-import MiniCalendar from "../../../Global/Calender/MiniCalendar";
+import MiniCalendar from "../../../../../components/Calender/MiniCalendar"
 
 const StudentDashboard = () => {
   const currentUser = JSON.parse(localStorage.getItem("studentCredentials"));
