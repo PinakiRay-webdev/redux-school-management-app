@@ -51,8 +51,8 @@ const App = () => {
       path: "/adminDashboard/dashboard",
       element:(
         <>
-        <Navbar/>
         <AdminSideBar/>
+        <Navbar/>
         <AdminDashboard/>
         </>
       )
