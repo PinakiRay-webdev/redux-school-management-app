@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getUsers } from "../../../Redux/slice/userSlice";
+import { getUsers } from "../../Redux/slice/userSlice";
 import { CiLocationOn, CiHome, CiPhone } from "react-icons/ci";
 import { IoIosFemale, IoIosMale } from "react-icons/io";
 import { BsCake2 } from "react-icons/bs";

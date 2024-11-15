@@ -3,10 +3,10 @@ import { MdOutlineLightMode , MdModeNight } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { useSelector ,  useDispatch } from 'react-redux';
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { getUsers } from '../../../Redux/slice/userSlice';
+import { getUsers } from '../../Redux/slice/userSlice';
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom';
-import { toggleTheme } from '../../../Redux/slice/themeSlice';
+import { toggleTheme } from '../../Redux/slice/themeSlice';
 
 const Navbar = () => {
 
